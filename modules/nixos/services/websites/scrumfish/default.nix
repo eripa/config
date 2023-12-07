@@ -2,12 +2,12 @@
 
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub optionalString optionalAttrs;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.scrumfish;
+  cfg = config.horizon.services.websites.scrumfish;
 in
 {
-  options.plusultra.services.websites.scrumfish = with lib.types; {
+  options.horizon.services.websites.scrumfish = with lib.types; {
     enable = mkEnableOption "Scrumfish";
     package = mkOpt package pkgs.scrumfish "The package to use.";
     domain = mkOpt str "scrumfi.sh" "The domain to serve the website site on.";

@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.desktop.sway;
-  term = config.plusultra.desktop.addons.term;
+  cfg = config.horizon.desktop.sway;
+  term = config.horizon.desktop.addons.term;
   substitutedConfig = pkgs.substituteAll {
     src = ./config;
     term = term.pkg.pname or term.pkg.name;
   };
 in
 {
-  options.plusultra.desktop.sway = with types; {
+  options.horizon.desktop.sway = with types; {
     enable = mkBoolOpt false "Whether or not to enable Sway.";
     wallpaper = mkOpt (nullOr package) null "The wallpaper to display.";
     extraConfig =
@@ -20,7 +20,7 @@ in
 
   config = mkIf cfg.enable {
     # Desktop additions
-    plusultra.desktop.addons = {
+    horizon.desktop.addons = {
       gtk = enabled;
       foot = enabled;
       mako = enabled;
@@ -35,7 +35,7 @@ in
       electron-support = enabled;
     };
 
-    plusultra.home.configFile."sway/config".text =
+    horizon.home.configFile."sway/config".text =
       fileWithText substitutedConfig ''
         #############################
         #░░░░░░░░░░░░░░░░░░░░░░░░░░░#

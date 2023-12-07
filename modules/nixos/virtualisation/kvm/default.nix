@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.virtualisation.kvm;
-  user = config.plusultra.user;
+  cfg = config.horizon.virtualisation.kvm;
+  user = config.horizon.user;
 in
 {
-  options.plusultra.virtualisation.kvm = with types; {
+  options.horizon.virtualisation.kvm = with types; {
     enable = mkBoolOpt false "Whether or not to enable KVM virtualisation.";
     vfioIds = mkOpt (listOf str) [ ]
       "The hardware IDs to pass through to a virtual machine.";
@@ -70,7 +70,7 @@ in
       };
     };
 
-    plusultra = {
+    horizon = {
       user = { extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ]; };
 
       apps = { looking-glass-client = enabled; };

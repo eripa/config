@@ -1,20 +1,20 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.desktop.addons.kanshi;
-  user = config.plusultra.user;
+  cfg = config.horizon.desktop.addons.kanshi;
+  user = config.horizon.user;
   home = config.users.users.${user.name}.home;
 in
 {
-  options.plusultra.desktop.addons.kanshi = with types; {
+  options.horizon.desktop.addons.kanshi = with types; {
     enable =
       mkBoolOpt false "Whether to enable Kanshi in the desktop environment.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.home.configFile."kanshi/config".source = ./config;
+    horizon.home.configFile."kanshi/config".source = ./config;
 
     environment.systemPackages = with pkgs; [ kanshi ];
 

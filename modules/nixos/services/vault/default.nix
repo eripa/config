@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.services.vault;
+  cfg = config.horizon.services.vault;
 
   package = if cfg.ui then pkgs.vault-bin else pkgs.vault;
 
@@ -54,7 +54,7 @@ let
     cfg.policies;
 in
 {
-  options.plusultra.services.vault = {
+  options.horizon.services.vault = {
     enable = mkEnableOption "Vault";
 
     ui = mkBoolOpt true "Whether the UI should be enabled.";

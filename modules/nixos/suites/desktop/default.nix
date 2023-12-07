@@ -1,18 +1,18 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.desktop;
+  cfg = config.horizon.suites.desktop;
 in
 {
-  options.plusultra.suites.desktop = with types; {
+  options.horizon.suites.desktop = with types; {
     enable =
       mkBoolOpt false "Whether or not to enable common desktop configuration.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       desktop = {
         gnome = enabled;
 

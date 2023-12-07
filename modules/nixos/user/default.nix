@@ -1,9 +1,9 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.user;
+  cfg = config.horizon.user;
   defaultIconFileName = "profile.png";
   defaultIcon = pkgs.stdenvNoCC.mkDerivation {
     name = "default-icon";
@@ -20,14 +20,14 @@ let
   propagatedIcon = pkgs.runCommandNoCC "propagated-icon"
     { passthru = { fileName = cfg.icon.fileName; }; }
     ''
-      local target="$out/share/plusultra-icons/user/${cfg.name}"
+      local target="$out/share/horizon-icons/user/${cfg.name}"
       mkdir -p "$target"
 
       cp ${cfg.icon} "$target/${cfg.icon.fileName}"
     '';
 in
 {
-  options.plusultra.user = with types; {
+  options.horizon.user = with types; {
     name = mkOpt str "short" "The name to use for the user account.";
     fullName = mkOpt str "Jake Hamilton" "The full name of the user.";
     email = mkOpt str "jake.hamilton@hey.com" "The email of the user.";
@@ -46,7 +46,7 @@ in
       cowsay
       fortune
       lolcat
-      plusultra.cowsay-plus
+      horizon.cowsay-plus
       propagatedIcon
     ];
 
@@ -56,7 +56,7 @@ in
       histFile = "$XDG_CACHE_HOME/zsh.history";
     };
 
-    plusultra.home = {
+    horizon.home = {
       file = {
         "Desktop/.keep".text = "";
         "Documents/.keep".text = "";
@@ -109,7 +109,7 @@ in
               # Improved vim bindings.
               source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
             '' + optionalString cfg.prompt-init ''
-              ${pkgs.toilet}/bin/toilet -f future "Plus Ultra" --gay
+              ${pkgs.toilet}/bin/toilet -f future "Beyond the Horizon" --gay
             '';
 
             shellAliases = {

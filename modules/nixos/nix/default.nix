@@ -1,9 +1,9 @@
 { options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.nix;
+  cfg = config.horizon.nix;
 
   substituters-submodule = types.submodule ({ name, ... }: {
     options = with types; {
@@ -12,7 +12,7 @@ let
   });
 in
 {
-  options.plusultra.nix = with types; {
+  options.horizon.nix = with types; {
     enable = mkBoolOpt true "Whether or not to manage nix configuration.";
     package = mkOpt package pkgs.nixUnstable "Which nix package to use.";
 
@@ -28,13 +28,13 @@ in
     assertions = mapAttrsToList
       (name: value: {
         assertion = value.key != null;
-        message = "plusultra.nix.extra-substituters.${name}.key must be set";
+        message = "horizon.nix.extra-substituters.${name}.key must be set";
       })
       cfg.extra-substituters;
 
     environment.systemPackages = with pkgs; [
-      plusultra.nixos-revision
-      (plusultra.nixos-hosts.override {
+      horizon.nixos-revision
+      (horizon.nixos-hosts.override {
         hosts = inputs.self.nixosConfigurations;
       })
       deploy-rs
@@ -46,7 +46,7 @@ in
     ];
 
     nix =
-      let users = [ "root" config.plusultra.user.name ] ++
+      let users = [ "root" config.horizon.user.name ] ++
         optional config.services.hydra.enable "hydra";
       in
       {
@@ -71,7 +71,7 @@ in
               ++
               (mapAttrsToList (name: value: value.key) cfg.extra-substituters);
 
-        } // (lib.optionalAttrs config.plusultra.tools.direnv.enable {
+        } // (lib.optionalAttrs config.horizon.tools.direnv.enable {
           keep-outputs = true;
           keep-derivations = true;
         });

@@ -5,7 +5,7 @@
 }:
 
 let
-  inherit (lib.plusultra) override-meta;
+  inherit (lib.horizon) override-meta;
 
   new-meta = with lib; {
     description = "A helper show the current git revision of the system configuration.";

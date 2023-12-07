@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.apps.blender;
+with lib.horizon;
+let cfg = config.horizon.apps.blender;
 in
 {
-  options.plusultra.apps.blender = with types; {
+  options.horizon.apps.blender = with types; {
     enable = mkBoolOpt false "Whether or not to enable Blender.";
   };
 

@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.desktop.addons.skhd;
+  cfg = config.horizon.desktop.addons.skhd;
 
   mkScript = name: file: pkgs.writeShellApplication {
     inherit name;
@@ -14,7 +14,7 @@ let
   open-iterm2 = mkScript "open-iterm2" ./scripts/open-iterm2.sh;
 in
 {
-  options.plusultra.desktop.addons.skhd = {
+  options.horizon.desktop.addons.skhd = {
     enable = mkEnableOption "skhd";
   };
 

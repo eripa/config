@@ -3,10 +3,10 @@
 let
   inherit (lib) types;
 
-  cfg = config.plusultra.services.minecraft;
+  cfg = config.horizon.services.minecraft;
 in
 {
-  options.plusultra.services.minecraft = {
+  options.horizon.services.minecraft = {
     enable = lib.mkEnableOption "Minecraft server";
 
     eula = lib.mkOption {
@@ -73,7 +73,7 @@ in
               if config.type == "vanilla" then
                 pkgs.minecraft-server
               else
-                pkgs.plusultra.minecraft-forge;
+                pkgs.horizon.minecraft-forge;
             defaultText = lib.literalExpression ''
               pkgs.minecraft-server
             '';
@@ -174,8 +174,8 @@ in
             description = lib.mdDoc ''
               Whether to use a declarative Minecraft server configuration.
               Only if set to `true`, the options
-              {option}`plusultra.services.minecraft.servers.<name>.whitelist` and
-              {option}`plusultra.services.minecraft.servers.<name>.serverProperties` will be
+              {option}`horizon.services.minecraft.servers.<name>.whitelist` and
+              {option}`horizon.services.minecraft.servers.<name>.serverProperties` will be
               applied.
             '';
           };

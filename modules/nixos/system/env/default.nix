@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.system.env;
+with lib.horizon;
+let cfg = config.horizon.system.env;
 in
 {
-  options.plusultra.system.env = with types;
+  options.horizon.system.env = with types;
     mkOption {
       type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
       apply = mapAttrs (n: v:

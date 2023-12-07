@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.apps.logseq;
+with lib.horizon;
+let cfg = config.horizon.apps.logseq;
 in
 {
-  options.plusultra.apps.logseq = with types; {
+  options.horizon.apps.logseq = with types; {
     enable = mkBoolOpt false "Whether or not to enable logseq.";
   };
 

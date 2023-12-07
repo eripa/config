@@ -1,22 +1,22 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.comma;
+  cfg = config.horizon.tools.comma;
 in
 {
-  options.plusultra.tools.comma = with types; {
+  options.horizon.tools.comma = with types; {
     enable = mkBoolOpt false "Whether or not to enable comma.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       comma
-      plusultra.nix-update-index
+      horizon.nix-update-index
     ];
 
-    plusultra.home = {
+    horizon.home = {
       configFile = {
         "wgetrc".text = "";
       };

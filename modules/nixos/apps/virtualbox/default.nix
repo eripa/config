@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.virtualbox;
+  cfg = config.horizon.apps.virtualbox;
 in
 {
-  options.plusultra.apps.virtualbox = with types; {
+  options.horizon.apps.virtualbox = with types; {
     enable = mkBoolOpt false "Whether or not to enable Virtualbox.";
   };
 
@@ -16,6 +16,6 @@ in
       enableExtensionPack = true;
     };
 
-    plusultra.user.extraGroups = [ "vboxusers" ];
+    horizon.user.extraGroups = [ "vboxusers" ];
   };
 }

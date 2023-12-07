@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.hardware.storage;
+with lib.horizon;
+let cfg = config.horizon.hardware.storage;
 in
 {
-  options.plusultra.hardware.storage = with types; {
+  options.horizon.hardware.storage = with types; {
     enable = mkBoolOpt false
       "Whether or not to enable support for extra storage devices.";
   };

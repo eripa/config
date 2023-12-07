@@ -9,10 +9,10 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.services.openssh;
+with lib.horizon; let
+  cfg = config.horizon.services.openssh;
 
-  user = config.users.users.${config.plusultra.user.name};
+  user = config.users.users.${config.horizon.user.name};
   user-id = builtins.toString user.uid;
 
   # TODO: This is a hold-over from an earlier Snowfall Lib version which used
@@ -24,7 +24,7 @@ with lib.plusultra; let
   other-hosts =
     lib.filterAttrs
     (key: host:
-      key != name && (host.config.plusultra.user.name or null) != null)
+      key != name && (host.config.horizon.user.name or null) != null)
     ((inputs.self.nixosConfigurations or {}) // (inputs.self.darwinConfigurations or {}));
 
   other-hosts-config =
@@ -33,7 +33,7 @@ with lib.plusultra; let
     (
       name: let
         remote = other-hosts.${name};
-        remote-user-name = remote.config.plusultra.user.name;
+        remote-user-name = remote.config.horizon.user.name;
         remote-user-id = builtins.toString remote.config.users.users.${remote-user-name}.uid;
 
         forward-gpg =
@@ -52,7 +52,7 @@ with lib.plusultra; let
     )
     (builtins.attrNames other-hosts);
 in {
-  options.plusultra.services.openssh = with types; {
+  options.horizon.services.openssh = with types; {
     enable = mkBoolOpt false "Whether or not to configure OpenSSH support.";
     authorizedKeys =
       mkOpt (listOf str) [default-key] "The public keys to apply.";
@@ -89,10 +89,10 @@ in {
       ${optionalString cfg.manage-other-hosts other-hosts-config}
     '';
 
-    plusultra.user.extraOptions.openssh.authorizedKeys.keys =
+    horizon.user.extraOptions.openssh.authorizedKeys.keys =
       cfg.authorizedKeys;
 
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       programs.zsh.shellAliases =
         foldl
         (aliases: system:

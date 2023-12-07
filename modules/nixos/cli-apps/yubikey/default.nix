@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.cli-apps.yubikey;
+  cfg = config.horizon.cli-apps.yubikey;
 in
 {
-  options.plusultra.cli-apps.yubikey = with types; {
+  options.horizon.cli-apps.yubikey = with types; {
     enable = mkBoolOpt false "Whether or not to enable Yubikey.";
   };
 

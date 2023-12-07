@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.services.attic;
+  cfg = config.horizon.services.attic;
 
   toml-format = pkgs.formats.toml { };
 
@@ -31,7 +31,7 @@ let
     && is-local-db-url;
 in
 {
-  options.plusultra.services.attic = {
+  options.horizon.services.attic = {
     enable = mkEnableOption "Attic";
 
     package = mkOpt types.package pkgs.attic-server "The attic-server package to use.";
@@ -48,7 +48,7 @@ in
     assertions = [
       {
         assertion = !isStorePath cfg.credentials;
-        message = "plusultra.services.attic.credentials CANNOT be in the Nix Store.";
+        message = "horizon.services.attic.credentials CANNOT be in the Nix Store.";
       }
     ];
 
@@ -65,7 +65,7 @@ in
       };
     };
 
-    plusultra = {
+    horizon = {
       tools.attic = enabled;
 
       services.attic.settings = {

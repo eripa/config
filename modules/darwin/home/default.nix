@@ -1,16 +1,16 @@
 { options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.home;
+  cfg = config.horizon.home;
 in
 {
   # imports = with inputs; [
   #   home-manager.darwinModules.home-manager
   # ];
 
-  options.plusultra.home = with types; {
+  options.horizon.home = with types; {
     file = mkOpt attrs { }
       "A set of files to be managed by home-manager's <option>home.file</option>.";
     configFile = mkOpt attrs { }
@@ -20,21 +20,21 @@ in
   };
 
   config = {
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       home.stateVersion = mkDefault "22.11";
-      home.file = mkAliasDefinitions options.plusultra.home.file;
+      home.file = mkAliasDefinitions options.horizon.home.file;
       xdg.enable = true;
-      xdg.configFile = mkAliasDefinitions options.plusultra.home.configFile;
+      xdg.configFile = mkAliasDefinitions options.horizon.home.configFile;
     };
 
-    snowfallorg.user.${config.plusultra.user.name}.home.config = mkAliasDefinitions options.plusultra.home.extraOptions;
+    snowfallorg.user.${config.horizon.user.name}.home.config = mkAliasDefinitions options.horizon.home.extraOptions;
 
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
 
-      # users.${config.plusultra.user.name} = args:
-      #   mkAliasDefinitions options.plusultra.home.extraOptions;
+      # users.${config.horizon.user.name} = args:
+      #   mkAliasDefinitions options.horizon.home.extraOptions;
     };
   };
 }

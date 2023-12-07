@@ -6,8 +6,8 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.desktop.gnome;
+with lib.horizon; let
+  cfg = config.horizon.desktop.gnome;
   gdmHome = config.users.users.gdm.home;
 
   defaultExtensions = with pkgs.gnomeExtensions; [
@@ -36,12 +36,12 @@ with lib.plusultra; let
   default-attrs = mapAttrs (key: mkDefault);
   nested-default-attrs = mapAttrs (key: default-attrs);
 in {
-  options.plusultra.desktop.gnome = with types; {
+  options.horizon.desktop.gnome = with types; {
     enable =
       mkBoolOpt false "Whether or not to use Gnome as the desktop environment.";
     wallpaper = {
-      light = mkOpt (oneOf [str package]) pkgs.plusultra.wallpapers.nord-rainbow-light-nix "The light wallpaper to use.";
-      dark = mkOpt (oneOf [str package]) pkgs.plusultra.wallpapers.nord-rainbow-dark-nix "The dark wallpaper to use.";
+      light = mkOpt (oneOf [str package]) pkgs.horizon.wallpapers.nord-rainbow-light-nix "The light wallpaper to use.";
+      dark = mkOpt (oneOf [str package]) pkgs.horizon.wallpapers.nord-rainbow-dark-nix "The dark wallpaper to use.";
     };
     color-scheme = mkOpt (enum ["light" "dark"]) "dark" "The color scheme to use.";
     wayland = mkBoolOpt true "Whether or not to use Wayland.";
@@ -52,8 +52,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    plusultra.system.xkb.enable = true;
-    plusultra.desktop.addons = {
+    horizon.system.xkb.enable = true;
+    horizon.desktop.addons = {
       gtk = enabled;
       wallpapers = enabled;
       electron-support = enabled;
@@ -62,7 +62,7 @@ in {
 
     environment.systemPackages = with pkgs;
       [
-        (hiPrio plusultra.xdg-open-with-portal)
+        (hiPrio horizon.xdg-open-with-portal)
         wl-clipboard
         gnome.gnome-tweaks
         gnome.nautilus-python
@@ -89,7 +89,7 @@ in {
         lib.optional (cfg.monitors != null) "L+ ${gdmHome}/.config/monitors.xml - - - - ${cfg.monitors}"
       );
 
-    systemd.services.plusultra-user-icon = {
+    systemd.services.horizon-user-icon = {
       before = ["display-manager.service"];
       wantedBy = ["display-manager.service"];
 
@@ -100,8 +100,8 @@ in {
       };
 
       script = ''
-        config_file=/var/lib/AccountsService/users/${config.plusultra.user.name}
-        icon_file=/run/current-system/sw/share/plusultra-icons/user/${config.plusultra.user.name}/${config.plusultra.user.icon.fileName}
+        config_file=/var/lib/AccountsService/users/${config.horizon.user.name}
+        icon_file=/run/current-system/sw/share/horizon-icons/user/${config.horizon.user.name}/${config.horizon.user.icon.fileName}
 
         if ! [ -d "$(dirname "$config_file")"]; then
           mkdir -p "$(dirname "$config_file")"
@@ -139,9 +139,9 @@ in {
       desktopManager.gnome.enable = true;
     };
 
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       dconf.settings = let
-        user = config.users.users.${config.plusultra.user.name};
+        user = config.users.users.${config.horizon.user.name};
         get-wallpaper = wallpaper:
           if lib.isDerivation wallpaper
           then builtins.toString wallpaper
@@ -159,13 +159,13 @@ in {
               ];
             favorite-apps =
               ["org.gnome.Nautilus.desktop"]
-              ++ optional config.plusultra.apps.firefox.enable "firefox.desktop"
-              ++ optional config.plusultra.apps.vscode.enable "code.desktop"
-              ++ optional config.plusultra.desktop.addons.foot.enable "foot.desktop"
-              ++ optional config.plusultra.apps.logseq.enable "logseq.desktop"
-              ++ optional config.plusultra.apps.discord.enable "discord.desktop"
-              ++ optional config.plusultra.apps.element.enable "element-desktop.desktop"
-              ++ optional config.plusultra.apps.steam.enable "steam.desktop";
+              ++ optional config.horizon.apps.firefox.enable "firefox.desktop"
+              ++ optional config.horizon.apps.vscode.enable "code.desktop"
+              ++ optional config.horizon.desktop.addons.foot.enable "foot.desktop"
+              ++ optional config.horizon.apps.logseq.enable "logseq.desktop"
+              ++ optional config.horizon.apps.discord.enable "discord.desktop"
+              ++ optional config.horizon.apps.element.enable "element-desktop.desktop"
+              ++ optional config.horizon.apps.steam.enable "steam.desktop";
           };
 
           "org/gnome/desktop/background" = {
@@ -256,8 +256,8 @@ in {
             menu-button-icon-image = 23;
 
             menu-button-terminal =
-              if config.plusultra.desktop.addons.term.enable
-              then lib.getExe config.plusultra.desktop.addons.term.pkg
+              if config.horizon.desktop.addons.term.enable
+              then lib.getExe config.horizon.desktop.addons.term.pkg
               else lib.getExe pkgs.gnome.gnome-terminal;
           };
 

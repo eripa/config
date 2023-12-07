@@ -6,7 +6,7 @@
 }:
 
 let
-  inherit (lib.plusultra) override-meta;
+  inherit (lib.horizon) override-meta;
 
   nix-get-proton-up =
     writeShellApplication

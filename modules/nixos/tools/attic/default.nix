@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.attic;
+  cfg = config.horizon.tools.attic;
 in
 {
-  options.plusultra.tools.attic = {
+  options.horizon.tools.attic = {
     enable = mkEnableOption "Attic";
   };
 

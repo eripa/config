@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.security.keyring;
+  cfg = config.horizon.security.keyring;
 in
 {
-  options.plusultra.security.keyring = with types; {
+  options.horizon.security.keyring = with types; {
     enable = mkBoolOpt false "Whether to enable gnome keyring.";
   };
 

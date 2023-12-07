@@ -1,7 +1,7 @@
 { lib, makeDesktopItem, firefox, ... }:
 
 let
-  with-meta = lib.plusultra.override-meta {
+  with-meta = lib.horizon.override-meta {
     platforms = lib.platforms.linux;
     broken = firefox.meta.broken;
 
@@ -16,7 +16,7 @@ let
       desktopName = "Twitter";
       genericName = "The toxic bird app.";
       exec = ''
-        ${firefox}/bin/firefox "https://twitter.com/home?plusultra.app=true"'';
+        ${firefox}/bin/firefox "https://twitter.com/home?horizon.app=true"'';
       icon = ./icon.svg;
       type = "Application";
       categories = [ "Network" "InstantMessaging" "Feed" ];

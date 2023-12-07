@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.tools.http;
+with lib.horizon;
+let cfg = config.horizon.tools.http;
 in
 {
-  options.plusultra.tools.http = with types; {
+  options.horizon.tools.http = with types; {
     enable = mkBoolOpt false "Whether or not to enable common http utilities.";
   };
 

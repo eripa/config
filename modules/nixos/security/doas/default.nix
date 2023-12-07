@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.security.doas;
+with lib.horizon;
+let cfg = config.horizon.security.doas;
 in
 {
-  options.plusultra.security.doas = {
+  options.horizon.security.doas = {
     enable = mkBoolOpt false "Whether or not to replace sudo with doas.";
   };
 
@@ -17,7 +17,7 @@ in
     security.doas = {
       enable = true;
       extraRules = [{
-        users = [ config.plusultra.user.name ];
+        users = [ config.horizon.user.name ];
         noPass = true;
         keepEnv = true;
       }];

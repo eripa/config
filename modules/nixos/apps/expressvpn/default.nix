@@ -1,19 +1,19 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.expressvpn;
+  cfg = config.horizon.apps.expressvpn;
 in
 {
-  options.plusultra.apps.expressvpn = {
+  options.horizon.apps.expressvpn = {
     enable = mkEnableOption "Express VPN";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      plusultra.expressvpn
-    ] ++ optionals config.plusultra.desktop.gnome.enable [
+      horizon.expressvpn
+    ] ++ optionals config.horizon.desktop.gnome.enable [
       gnomeExtensions.evpn-shell-assistant
     ];
 
@@ -26,7 +26,7 @@ in
       description = "ExpressVPN Daemon";
 
       serviceConfig = {
-        ExecStart = "${pkgs.plusultra.expressvpn}/bin/expressvpnd";
+        ExecStart = "${pkgs.horizon.expressvpn}/bin/expressvpnd";
         Restart = "on-failure";
         RestartSec = 5;
       };

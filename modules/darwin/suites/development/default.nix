@@ -1,18 +1,18 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.development;
+  cfg = config.horizon.suites.development;
 in
 {
-  options.plusultra.suites.development = with types; {
+  options.horizon.suites.development = with types; {
     enable = mkBoolOpt false
       "Whether or not to enable common development configuration.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       apps = {
         vscode = enabled;
       };

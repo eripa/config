@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; {
+with lib.horizon; {
   imports = [./hardware.nix];
 
   # Resolve an issue with Bismuth's wired connections failing sometimes due to weird
@@ -29,7 +29,7 @@ with lib.plusultra; {
 
   environment.systemPackages = with pkgs; [
     chromium
-    plusultra.kalidoface
+    horizon.kalidoface
     deluge
   ];
 
@@ -55,7 +55,7 @@ with lib.plusultra; {
     motherboard = "amd";
   };
 
-  plusultra = {
+  horizon = {
     apps = {
       rpcs3 = enabled;
       ubports-installer = enabled;
@@ -96,8 +96,8 @@ with lib.plusultra; {
 
     desktop.gnome = {
       wallpaper = {
-        light = pkgs.plusultra.wallpapers.nord-rainbow-light-nix-ultrawide;
-        dark = pkgs.plusultra.wallpapers.nord-rainbow-dark-nix-ultrawide;
+        light = pkgs.horizon.wallpapers.nord-rainbow-light-nix-ultrawide;
+        dark = pkgs.horizon.wallpapers.nord-rainbow-dark-nix-ultrawide;
       };
       monitors = ./monitors.xml;
     };

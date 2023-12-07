@@ -3,10 +3,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.plusultra.cli-apps.zsh;
+  cfg = config.horizon.cli-apps.zsh;
 in
 {
-  options.plusultra.cli-apps.zsh = {
+  options.horizon.cli-apps.zsh = {
     enable = mkEnableOption "ZSH";
   };
 
@@ -25,7 +25,7 @@ in
           # Use vim bindings.
           set -o vi
 
-          ${pkgs.toilet}/bin/toilet -f future "Plus Ultra" --gay
+          ${pkgs.toilet}/bin/toilet -f future "Beyond the Horizon" --gay
 
           # Improved vim bindings.
           source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh

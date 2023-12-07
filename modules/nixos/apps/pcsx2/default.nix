@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.pcsx2;
+  cfg = config.horizon.apps.pcsx2;
 in
 {
-  options.plusultra.apps.pcsx2 = with types; {
+  options.horizon.apps.pcsx2 = with types; {
     enable = mkBoolOpt false "Whether or not to enable PCSX2.";
   };
 

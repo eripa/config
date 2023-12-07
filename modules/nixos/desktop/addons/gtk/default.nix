@@ -6,11 +6,11 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.desktop.addons.gtk;
+with lib.horizon; let
+  cfg = config.horizon.desktop.addons.gtk;
   gdmCfg = config.services.xserver.displayManager.gdm;
 in {
-  options.plusultra.desktop.addons.gtk = with types; {
+  options.horizon.desktop.addons.gtk = with types; {
     enable = mkBoolOpt false "Whether to customize GTK and apply themes.";
     theme = {
       name =
@@ -22,7 +22,7 @@ in {
       name =
         mkOpt str "Bibata-Modern-Ice"
         "The name of the cursor theme to apply.";
-      pkg = mkOpt package pkgs.plusultra.bibata-cursors "The package to use for the cursor theme.";
+      pkg = mkOpt package pkgs.horizon.bibata-cursors "The package to use for the cursor theme.";
     };
     icon = {
       name =
@@ -42,7 +42,7 @@ in {
       XCURSOR_THEME = cfg.cursor.name;
     };
 
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       gtk = {
         enable = true;
 

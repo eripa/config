@@ -1,17 +1,17 @@
 { config, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.cache.public;
+  cfg = config.horizon.cache.public;
 in
 {
-  options.plusultra.cache.public = {
-    enable = mkEnableOption "Plus Ultra public cache";
+  options.horizon.cache.public = {
+    enable = mkEnableOption "Beyond the Horizon public cache";
   };
 
   config = mkIf cfg.enable {
-    plusultra.nix.extra-substituters = {
+    horizon.nix.extra-substituters = {
       "https://attic.ruby.hamho.me/public".key = "public:QUkZTErD8fx9HQ64kuuEUZHO9tXNzws7chV8qy/KLUk=";
     };
   };

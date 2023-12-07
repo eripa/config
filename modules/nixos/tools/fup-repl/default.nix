@@ -1,15 +1,15 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.fup-repl;
+  cfg = config.horizon.tools.fup-repl;
   fup-repl = pkgs.writeShellScriptBin "fup-repl" ''
     ${pkgs.fup-repl}/bin/repl ''${@}
   '';
 in
 {
-  options.plusultra.tools.fup-repl = with types; {
+  options.horizon.tools.fup-repl = with types; {
     enable = mkBoolOpt false "Whether to enable fup-repl or not";
   };
 

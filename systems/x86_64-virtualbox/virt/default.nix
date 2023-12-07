@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   virtualisation.virtualbox.guest.enable = true;
 
@@ -11,7 +11,7 @@ with lib.plusultra;
     WLR_NO_HARDWARE_CURSORS=1
   '';
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     apps = {

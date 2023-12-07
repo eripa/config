@@ -7,8 +7,8 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.security.gpg;
+with lib.horizon; let
+  cfg = config.horizon.security.gpg;
 
   gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
 
@@ -55,7 +55,7 @@ with lib.plusultra; let
     ${pkgs.gnupg}/bin/gpg-connect-agent "scd serialno" "learn --force" /bye
   '';
 in {
-  options.plusultra.security.gpg = with types; {
+  options.horizon.security.gpg = with types; {
     enable = mkBoolOpt false "Whether or not to enable GPG.";
     agentTimeout = mkOpt int 5 "The amount of time to wait before continuing with shell init.";
   };
@@ -102,7 +102,7 @@ in {
       };
     };
 
-    plusultra = {
+    horizon = {
       home.file = {
         ".gnupg/.keep".text = "";
 

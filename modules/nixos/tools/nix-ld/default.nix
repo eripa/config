@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.tools.nix-ld;
+with lib.horizon;
+let cfg = config.horizon.tools.nix-ld;
 in
 {
-  options.plusultra.tools.nix-ld = with types; {
+  options.horizon.tools.nix-ld = with types; {
     enable = mkBoolOpt false "Whether or not to enable nix-ld.";
   };
 

@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.cli-apps.wine;
+  cfg = config.horizon.cli-apps.wine;
 in
 {
-  options.plusultra.cli-apps.wine = with types; {
+  options.horizon.cli-apps.wine = with types; {
     enable = mkBoolOpt false "Whether or not to enable Wine.";
   };
 

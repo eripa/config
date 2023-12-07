@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.cli-apps.proton;
+  cfg = config.horizon.cli-apps.proton;
 in
 {
-  options.plusultra.cli-apps.proton = with types; {
+  options.horizon.cli-apps.proton = with types; {
     enable = mkBoolOpt false "Whether or not to enable Proton.";
   };
 

@@ -6,10 +6,10 @@ inputs @ {
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.cli-apps.neovim;
+with lib.horizon; let
+  cfg = config.horizon.cli-apps.neovim;
 in {
-  options.plusultra.cli-apps.neovim = with types; {
+  options.horizon.cli-apps.neovim = with types; {
     enable = mkBoolOpt false "Whether or not to enable neovim.";
   };
 
@@ -18,7 +18,7 @@ in {
       # FIXME: As of today (2022-12-09), `page` no longer works with my Neovim
       # configuration. Either something in my configuration is breaking it or `page` is busted.
       # page
-      plusultra.neovim
+      horizon.neovim
     ];
 
     environment.variables = {
@@ -31,7 +31,7 @@ in {
       EDITOR = "nvim";
     };
 
-    plusultra.home = {
+    horizon.home = {
       configFile = {
         "dashboard-nvim/.keep".text = "";
       };

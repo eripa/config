@@ -1,18 +1,18 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.hardware.networking;
+with lib.horizon;
+let cfg = config.horizon.hardware.networking;
 in
 {
-  options.plusultra.hardware.networking = with types; {
+  options.horizon.hardware.networking = with types; {
     enable = mkBoolOpt false "Whether or not to enable networking support";
     hosts = mkOpt attrs { }
       (mdDoc "An attribute set to merge with `networking.hosts`");
   };
 
   config = mkIf cfg.enable {
-    plusultra.user.extraGroups = [ "networkmanager" ];
+    horizon.user.extraGroups = [ "networkmanager" ];
 
     networking = {
       hosts = {

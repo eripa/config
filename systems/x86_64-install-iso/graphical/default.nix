@@ -1,13 +1,13 @@
 { pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   # `install-iso` adds wireless support that
   # is incompatible with networkmanager.
   networking.wireless.enable = mkForce false;
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     apps = {

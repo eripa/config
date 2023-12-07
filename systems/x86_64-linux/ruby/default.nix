@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
   build-machine = hostName: system: speedFactor: {
     inherit hostName system speedFactor;
@@ -11,7 +11,7 @@ in
 {
   imports = [ ./hardware.nix ];
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     cache.public = {

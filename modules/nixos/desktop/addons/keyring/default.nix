@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.desktop.addons.keyring;
+with lib.horizon;
+let cfg = config.horizon.desktop.addons.keyring;
 in
 {
-  options.plusultra.desktop.addons.keyring = with types; {
+  options.horizon.desktop.addons.keyring = with types; {
     enable = mkBoolOpt false "Whether to enable the gnome keyring.";
   };
 

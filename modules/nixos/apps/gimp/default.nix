@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.gimp;
+  cfg = config.horizon.apps.gimp;
 in
 {
-  options.plusultra.apps.gimp = with types; {
+  options.horizon.apps.gimp = with types; {
     enable = mkBoolOpt false "Whether or not to enable Gimp.";
   };
 

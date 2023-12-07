@@ -1,9 +1,9 @@
 { pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     cli-apps = { neovim = enabled; };

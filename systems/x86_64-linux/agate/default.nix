@@ -1,7 +1,7 @@
 { lib, pkgs, modulesPath, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   imports = [
     (modulesPath + "/virtualisation/digital-ocean-config.nix")
@@ -18,7 +18,7 @@ with lib.plusultra;
     443
   ];
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     cli-apps = {

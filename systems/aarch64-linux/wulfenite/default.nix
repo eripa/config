@@ -1,7 +1,7 @@
 { pkgs, config, lib, modulesPath, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   imports = with inputs.nixos-hardware.nixosModules; [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -12,7 +12,7 @@ with lib.plusultra;
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi3;
   };
 
-  plusultra = {
+  horizon = {
     archetypes = {
       server = enabled;
     };

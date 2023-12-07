@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.appimage-run;
+  cfg = config.horizon.tools.appimage-run;
 in
 {
-  options.plusultra.tools.appimage-run = with types; {
+  options.horizon.tools.appimage-run = with types; {
     enable = mkBoolOpt false "Whether or not to enable appimage-run.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.home.configFile."wgetrc".text = "";
+    horizon.home.configFile."wgetrc".text = "";
 
     environment.systemPackages = with pkgs; [
       appimage-run

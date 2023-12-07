@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.tools.qmk;
+with lib.horizon;
+let cfg = config.horizon.tools.qmk;
 in
 {
-  options.plusultra.tools.qmk = with types; {
+  options.horizon.tools.qmk = with types; {
     enable = mkBoolOpt false "Whether or not to enable QMK";
   };
 

@@ -1,19 +1,19 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.common;
+  cfg = config.horizon.suites.common;
 in
 {
-  options.plusultra.suites.common = with types; {
+  options.horizon.suites.common = with types; {
     enable = mkBoolOpt false "Whether or not to enable common configuration.";
   };
 
   config = mkIf cfg.enable {
     programs.zsh = enabled;
 
-    plusultra = {
+    horizon = {
       nix = enabled;
 
       apps = {

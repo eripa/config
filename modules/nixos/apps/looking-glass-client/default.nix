@@ -1,13 +1,13 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.looking-glass-client;
-  user = config.plusultra.user;
+  cfg = config.horizon.apps.looking-glass-client;
+  user = config.horizon.user;
 in
 {
-  options.plusultra.apps.looking-glass-client = with types; {
+  options.horizon.apps.looking-glass-client = with types; {
     enable =
       mkBoolOpt false "Whether or not to enable the Looking Glass client.";
   };

@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.system.input;
+with lib.horizon;
+let cfg = config.horizon.system.input;
 in
 {
-  options.plusultra.system.input = with types; {
+  options.horizon.system.input = with types; {
     enable = mkEnableOption "macOS input";
   };
 
@@ -38,7 +38,7 @@ in
         };
       };
 
-      snowfallorg.user.${config.plusultra.user.name}.home.config = {
+      snowfallorg.user.${config.horizon.user.name}.home.config = {
         home.activation = {
           # Disable special keys when using Option as a modifier.
           # https://superuser.com/questions/941286/disable-default-option-key-binding

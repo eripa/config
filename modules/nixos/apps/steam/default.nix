@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.steam;
+  cfg = config.horizon.apps.steam;
 in
 {
-  options.plusultra.apps.steam = with types; {
+  options.horizon.apps.steam = with types; {
     enable = mkBoolOpt false "Whether or not to enable support for Steam.";
   };
 
@@ -19,7 +19,7 @@ in
     # Enable GameCube controller support.
     services.udev.packages = [ pkgs.dolphinEmu ];
 
-    environment.systemPackages = with pkgs.plusultra; [
+    environment.systemPackages = with pkgs.horizon; [
       steam
     ];
 

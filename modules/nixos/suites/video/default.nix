@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.video;
+  cfg = config.horizon.suites.video;
 in
 {
-  options.plusultra.suites.video = with types; {
+  options.horizon.suites.video = with types; {
     enable = mkBoolOpt false "Whether or not to enable video configuration.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       apps = {
         pitivi = enabled;
         obs = enabled;

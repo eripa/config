@@ -4,7 +4,7 @@ let
   inherit (builtins) toString;
   inherit (lib) types;
 
-  cfg = config.plusultra.services.infrared;
+  cfg = config.horizon.services.infrared;
 
   format = pkgs.formats.json { };
 
@@ -66,7 +66,7 @@ let
   }));
 in
 {
-  options.plusultra.services.infrared = {
+  options.horizon.services.infrared = {
     enable = lib.mkEnableOption "Infrared";
 
     stateDir = lib.mkOption {
@@ -137,7 +137,7 @@ in
         User = cfg.user;
         Group = cfg.group;
         WorkingDirectory = cfg.stateDir;
-        ExecStart = "${pkgs.plusultra.infrared}/bin/infrared -config-path ${cfg.stateDir}";
+        ExecStart = "${pkgs.horizon.infrared}/bin/infrared -config-path ${cfg.stateDir}";
       };
     };
 

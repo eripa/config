@@ -2,10 +2,10 @@
 
 let
   inherit (lib) types mkEnableOption mkIf;
-  cfg = config.plusultra.tools.ssh;
+  cfg = config.horizon.tools.ssh;
 in
 {
-  options.plusultra.tools.ssh = {
+  options.horizon.tools.ssh = {
     enable = mkEnableOption "SSH";
   };
 

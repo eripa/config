@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps._1password;
+  cfg = config.horizon.apps._1password;
 in
 {
-  options.plusultra.apps._1password = with types; {
+  options.horizon.apps._1password = with types; {
     enable = mkBoolOpt false "Whether or not to enable 1password.";
   };
 
@@ -16,7 +16,7 @@ in
       _1password-gui = {
         enable = true;
 
-        polkitPolicyOwners = [ config.plusultra.user.name ];
+        polkitPolicyOwners = [ config.horizon.user.name ];
       };
     };
   };

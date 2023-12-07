@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.prismlauncher;
+  cfg = config.horizon.apps.prismlauncher;
 in
 {
-  options.plusultra.apps.prismlauncher = with types; {
+  options.horizon.apps.prismlauncher = with types; {
     enable = mkBoolOpt false "Whether or not to enable Prism Launcher.";
   };
 

@@ -4,7 +4,7 @@ let
   tailscale-key = builtins.getEnv "TAILSCALE_AUTH_KEY";
 in
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   virtualisation.digitalOcean = {
     rebuildFromUserData = false;
@@ -16,7 +16,7 @@ with lib.plusultra;
     neovim
   ];
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     cli-apps = {

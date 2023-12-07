@@ -1,7 +1,7 @@
 { pkgs, config, lib, modulesPath, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   imports = with inputs.nixos-hardware.nixosModules; [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -11,7 +11,7 @@ with lib.plusultra;
   nixpkgs.config.allowUnsupportedSystem = true;
   nixpkgs.crossSystem.system = "aarch64-linux";
 
-  plusultra = {
+  horizon = {
     archetypes = {
       server = enabled;
     };

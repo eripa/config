@@ -1,7 +1,7 @@
 { lib, makeDesktopItem, firefox, ... }:
 
 let
-  with-meta = lib.plusultra.override-meta {
+  with-meta = lib.horizon.override-meta {
     platforms = lib.platforms.linux;
     broken = firefox.meta.broken;
   };
@@ -11,7 +11,7 @@ let
     desktopName = "HEY";
     genericName = "The email app that makes email suck less.";
     exec = ''
-      ${firefox}/bin/firefox "https://app.hey.com/?plusultra.app=true"'';
+      ${firefox}/bin/firefox "https://app.hey.com/?horizon.app=true"'';
     icon = ./icon.svg;
     type = "Application";
     categories = [ "Office" "Network" "Email" ];

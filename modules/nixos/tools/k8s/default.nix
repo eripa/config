@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.tools.k8s;
+with lib.horizon;
+let cfg = config.horizon.tools.k8s;
 in
 {
-  options.plusultra.tools.k8s = with types; {
+  options.horizon.tools.k8s = with types; {
     enable =
       mkBoolOpt false "Whether or not to enable common Kubernetes utilities.";
   };

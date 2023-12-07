@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.hardware.fingerprint;
+with lib.horizon;
+let cfg = config.horizon.hardware.fingerprint;
 in
 {
-  options.plusultra.hardware.fingerprint = with types; {
+  options.horizon.hardware.fingerprint = with types; {
     enable = mkBoolOpt false "Whether or not to enable fingerprint support.";
   };
 

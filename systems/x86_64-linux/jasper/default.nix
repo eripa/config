@@ -1,13 +1,13 @@
 { pkgs, lib, nixos-hardware, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   imports = [ ./hardware.nix ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  plusultra = {
+  horizon = {
     archetypes = {
       workstation = enabled;
     };
@@ -42,7 +42,7 @@ with lib.plusultra;
     };
   };
 
-  plusultra.home.extraOptions = {
+  horizon.home.extraOptions = {
     # dconf.settings = {
     #   "org/gnome/shell/extensions/just-perfection" = {
     #     panel-size = 60;

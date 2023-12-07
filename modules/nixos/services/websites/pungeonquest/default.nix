@@ -12,11 +12,11 @@
     optionalString
     optionalAttrs
     ;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.pungeonquest;
+  cfg = config.horizon.services.websites.pungeonquest;
 in {
-  options.plusultra.services.websites.pungeonquest = with lib.types; {
+  options.horizon.services.websites.pungeonquest = with lib.types; {
     enable = mkEnableOption "Pungeonquest";
     package = mkOpt package pkgs.pungeonquest "The package to use.";
     domain = mkOpt str "pungeonquest.com" "The domain to serve the website site on.";

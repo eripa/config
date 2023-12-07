@@ -2,14 +2,14 @@
 
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.dotbox;
+  cfg = config.horizon.services.websites.dotbox;
 in
 {
-  options.plusultra.services.websites.dotbox = with lib.types; {
+  options.horizon.services.websites.dotbox = with lib.types; {
     enable = mkEnableOption "DotBox Website";
-    package = mkOpt package pkgs.plusultra.dotbox-website "The site package to use.";
+    package = mkOpt package pkgs.horizon.dotbox-website "The site package to use.";
     domain = mkOpt str "dotbox.dev" "The domain to serve the website site on.";
 
     acme = {

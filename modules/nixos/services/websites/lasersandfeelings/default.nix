@@ -3,12 +3,12 @@
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub optionalString
     optionalAttrs;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.lasersandfeelings;
+  cfg = config.horizon.services.websites.lasersandfeelings;
 in
 {
-  options.plusultra.services.websites.lasersandfeelings = with lib.types; {
+  options.horizon.services.websites.lasersandfeelings = with lib.types; {
     enable = mkEnableOption "Lasers and Feelings";
     package = mkOpt package pkgs.lasersandfeelings "The package to use.";
     domain = mkOpt str "lasersandfeelings.com" "The domain to serve the website site on.";

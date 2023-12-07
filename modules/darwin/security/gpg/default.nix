@@ -2,9 +2,9 @@
 
 let
   inherit (lib) types mkEnableOption mkIf;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.security.gpg;
+  cfg = config.horizon.security.gpg;
 
   gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
 
@@ -42,7 +42,7 @@ let
   '';
 in
 {
-  options.plusultra.security.gpg = {
+  options.horizon.security.gpg = {
     enable = mkEnableOption "GPG";
     agentTimeout = mkOpt types.int 5 "The amount of time to wait before continuing with shell init.";
   };
@@ -71,7 +71,7 @@ in
       enableSSHSupport = true;
     };
 
-    plusultra.home.file = {
+    horizon.home.file = {
       ".gnupg/.keep".text = "";
 
       ".gnupg/yubikey-guide.md".source = guide;

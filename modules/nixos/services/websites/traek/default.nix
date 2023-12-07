@@ -5,13 +5,13 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.traek;
+  cfg = config.horizon.services.websites.traek;
 in {
-  options.plusultra.services.websites.traek = with lib.types; {
+  options.horizon.services.websites.traek = with lib.types; {
     enable = mkEnableOption "traek.app Website";
-    package = mkOpt package pkgs.plusultra.traek-website "The site package to use.";
+    package = mkOpt package pkgs.horizon.traek-website "The site package to use.";
     domain = mkOpt str "traek.app" "The domain to serve the website site on.";
 
     acme = {

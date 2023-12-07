@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.pitivi;
+  cfg = config.horizon.apps.pitivi;
 in
 {
-  options.plusultra.apps.pitivi = with types; {
+  options.horizon.apps.pitivi = with types; {
     enable = mkBoolOpt false "Whether or not to enable Pitivi.";
   };
 

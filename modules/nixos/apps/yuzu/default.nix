@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.yuzu;
+  cfg = config.horizon.apps.yuzu;
 in
 {
-  options.plusultra.apps.yuzu = with types; {
+  options.horizon.apps.yuzu = with types; {
     enable = mkBoolOpt false "Whether or not to enable Yuzu.";
   };
 

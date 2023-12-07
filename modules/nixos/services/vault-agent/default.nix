@@ -1,9 +1,9 @@
 { lib, config, pkgs, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.services.vault-agent;
+  cfg = config.horizon.services.vault-agent;
 
   # nixos-vault-service places generated files here:
   # https://github.com/DeterminateSystems/nixos-vault-service/blob/45e65627dff5dc4bb40d0f2595916f37e78959c1/module/helpers.nix#L4
@@ -85,7 +85,7 @@ in
   #   inputs.vault-service.nixosModules.nixos-vault-service
   # ];
 
-  options.plusultra.services.vault-agent = {
+  options.horizon.services.vault-agent = {
     enable = mkEnableOption "Vault Agent";
 
     settings = mkOpt types.attrs { } "Default Vault Agent configuration.";
@@ -104,7 +104,7 @@ in
           (template-name: template:
             {
               assertion = (template.source != null && template.text == null) || (template.source == null && template.text != null);
-              message = "plusultra.services.vault-agent.services.${service-name}.secrets.environment.templates.${template-name} must set either `source` or `text`.";
+              message = "horizon.services.vault-agent.services.${service-name}.secrets.environment.templates.${template-name} must set either `source` or `text`.";
             }
           )
           service.secrets.environment.templates)
@@ -113,7 +113,7 @@ in
           (file-name: file:
             {
               assertion = (file.source != null && file.text == null) || (file.source == null && file.text != null);
-              message = "plusultra.services.vault-agent.services.${service-name}.secrets.file.files.${file-name} must set either `source` or `text`.";
+              message = "horizon.services.vault-agent.services.${service-name}.secrets.file.files.${file-name} must set either `source` or `text`.";
             }
           )
           service.secrets.file.files)

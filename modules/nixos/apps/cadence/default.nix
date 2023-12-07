@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.apps.cadence;
+with lib.horizon;
+let cfg = config.horizon.apps.cadence;
 in
 {
-  options.plusultra.apps.cadence = with types; {
+  options.horizon.apps.cadence = with types; {
     enable = mkBoolOpt false "Whether or not to enable Cadence.";
   };
 

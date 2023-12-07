@@ -1,7 +1,7 @@
 { pkgs, config, lib, modulesPath, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
   steam-pi-setup = pkgs.writeShellApplication {
     name = "steam-pi-setup";
@@ -48,7 +48,7 @@ in
 
     displayManager = {
       defaultSession = "none+openbox";
-      autoLogin.user = config.plusultra.user.name;
+      autoLogin.user = config.horizon.user.name;
 
       lightdm = {
         enable = true;
@@ -62,7 +62,7 @@ in
     numix-gtk-theme
   ];
 
-  plusultra = {
+  horizon = {
     suites = {
       common = enabled;
     };

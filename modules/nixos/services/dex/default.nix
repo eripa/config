@@ -4,7 +4,7 @@ let
   inherit (builtins) map removeAttrs;
   inherit (lib) mapAttrs flatten concatMap concatMapStringsSep;
 
-  cfg = config.plusultra.services.dex;
+  cfg = config.horizon.services.dex;
 
   process-client-settings = client:
     if client ? secretFile then
@@ -51,7 +51,7 @@ let
 
 in
 {
-  options.plusultra.services.dex = {
+  options.horizon.services.dex = {
     enable = lib.mkEnableOption "Dex, the OpenID Connect and OAuth 2 identity provider";
 
     stateDir = lib.mkOption {

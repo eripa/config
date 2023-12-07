@@ -1,15 +1,15 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.doukutsu-rs;
+  cfg = config.horizon.apps.doukutsu-rs;
   desktopItem = pkgs.makeDesktopItem {
     name = "doukutsu-rs";
     desktopName = "doukutsu-rs";
     genericName =
       "A fully playable re-implementation of Cave Story (Doukutsu Monogatari) engine written in Rust.";
-    exec = "${pkgs.plusultra.doukutsu-rs}/bin/doukutsu-rs";
+    exec = "${pkgs.horizon.doukutsu-rs}/bin/doukutsu-rs";
     icon = ./icon.png;
     type = "Application";
     categories = [ "Game" "AdventureGame" ];
@@ -17,12 +17,12 @@ let
   };
 in
 {
-  options.plusultra.apps.doukutsu-rs = with types; {
+  options.horizon.apps.doukutsu-rs = with types; {
     enable = mkBoolOpt false "Whether or not to enable doukutsu-rs.";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs.plusultra; [
+    environment.systemPackages = with pkgs.horizon; [
       doukutsu-rs
       desktopItem
     ];

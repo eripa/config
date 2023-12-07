@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.desktop.addons.rofi;
+with lib.horizon;
+let cfg = config.horizon.desktop.addons.rofi;
 in
 {
-  options.plusultra.desktop.addons.rofi = with types; {
+  options.horizon.desktop.addons.rofi = with types; {
     enable =
       mkBoolOpt false "Whether to enable Rofi in the desktop environment.";
   };
@@ -13,6 +13,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ rofi ];
 
-    plusultra.home.configFile."rofi/config.rasi".source = ./config.rasi;
+    horizon.home.configFile."rofi/config.rasi".source = ./config.rasi;
   };
 }

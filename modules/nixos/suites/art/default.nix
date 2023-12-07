@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.art;
+  cfg = config.horizon.suites.art;
 in
 {
-  options.plusultra.suites.art = with types; {
+  options.horizon.suites.art = with types; {
     enable = mkBoolOpt false "Whether or not to enable art configuration.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       apps = {
         gimp = enabled;
         inkscape = enabled;

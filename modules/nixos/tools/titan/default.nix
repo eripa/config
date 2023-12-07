@@ -1,18 +1,18 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.titan;
+  cfg = config.horizon.tools.titan;
 in
 {
-  options.plusultra.tools.titan = with types; {
+  options.horizon.tools.titan = with types; {
     enable = mkBoolOpt false "Whether or not to install Titan.";
-    pkg = mkOpt package pkgs.plusultra.titan "The package to install as Titan.";
+    pkg = mkOpt package pkgs.horizon.titan "The package to install as Titan.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.tools = {
+    horizon.tools = {
       # Titan depends on Node and Git
       node = enabled;
       git = enabled;

@@ -1,7 +1,7 @@
 { lib, pkgs, runCommandNoCC, nodejs, ... }:
 
 let
-  inherit (lib.plusultra) override-meta;
+  inherit (lib.horizon) override-meta;
 
   raw-node-packages = pkgs.callPackage ./create-node-packages.nix {
     inherit nodejs;

@@ -3,12 +3,12 @@
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub optionalString
     optionalAttrs;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.retrospectacle;
+  cfg = config.horizon.services.websites.retrospectacle;
 in
 {
-  options.plusultra.services.websites.retrospectacle = with lib.types; {
+  options.horizon.services.websites.retrospectacle = with lib.types; {
     enable = mkEnableOption "Retrospectacle";
     package = mkOpt package pkgs.retrospectacle "The package to use.";
     domain = mkOpt str "retrospectacle.app" "The domain to serve the website site on.";

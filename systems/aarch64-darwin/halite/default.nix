@@ -1,8 +1,8 @@
 { lib, pkgs, ... }:
 
-with lib.plusultra;
+with lib.horizon;
 {
-  plusultra = {
+  horizon = {
     suites = {
       common = enabled;
       development = enabled;

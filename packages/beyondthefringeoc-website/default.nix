@@ -1,7 +1,7 @@
 { lib, fetchFromGitHub, buildNpmPackage, ... }:
 
 let
-  inherit (lib.plusultra) override-meta;
+  inherit (lib.horizon) override-meta;
 
   src = fetchFromGitHub {
     owner = "jakehamilton";

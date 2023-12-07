@@ -1,12 +1,12 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.go;
+  cfg = config.horizon.tools.go;
 in
 {
-  options.plusultra.tools.go = with types; {
+  options.horizon.tools.go = with types; {
     enable = mkBoolOpt false "Whether or not to enable Go support.";
   };
 

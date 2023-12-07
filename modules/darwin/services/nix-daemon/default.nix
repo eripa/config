@@ -2,12 +2,12 @@
 
 let
   inherit (lib) types mkIf;
-  inherit (lib.plusultra) mkOpt enabled;
+  inherit (lib.horizon) mkOpt enabled;
 
-  cfg = config.plusultra.services.nix-daemon;
+  cfg = config.horizon.services.nix-daemon;
 in
 {
-  options.plusultra.services.nix-daemon = {
+  options.horizon.services.nix-daemon = {
     enable = mkOpt types.bool true "Whether to enable the Nix daemon.";
   };
 

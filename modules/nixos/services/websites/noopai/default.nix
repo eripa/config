@@ -2,12 +2,12 @@
 
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub foldl;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.noop-ai;
+  cfg = config.horizon.services.websites.noop-ai;
 in
 {
-  options.plusultra.services.websites.noop-ai = with lib.types; {
+  options.horizon.services.websites.noop-ai = with lib.types; {
     enable = mkEnableOption "noop.ai Website";
     package = mkOpt package pkgs.noop-ai-website "The site package to use.";
     domains = mkOpt (listOf str) [ "noop.ai" ] "The domain to serve the website site on.";

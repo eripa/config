@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.gparted;
+  cfg = config.horizon.apps.gparted;
 in
 {
-  options.plusultra.apps.gparted = with types; {
+  options.horizon.apps.gparted = with types; {
     enable = mkBoolOpt false "Whether or not to enable gparted.";
   };
 

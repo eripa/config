@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.winetricks;
+  cfg = config.horizon.apps.winetricks;
 in
 {
-  options.plusultra.apps.winetricks = with types; {
+  options.horizon.apps.winetricks = with types; {
     enable = mkBoolOpt false "Whether or not to enable Winetricks.";
   };
 

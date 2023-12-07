@@ -2,10 +2,10 @@
 
 let
   inherit (lib) types;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 in
 {
-  options.plusultra.host = {
+  options.horizon.host = {
     name = mkOpt (types.nullOr types.str) host "The host name.";
   };
 }

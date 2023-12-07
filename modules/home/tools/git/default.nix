@@ -2,13 +2,13 @@
 
 let
   inherit (lib) types mkEnableOption mkIf;
-  inherit (lib.plusultra) mkOpt enabled;
+  inherit (lib.horizon) mkOpt enabled;
 
-  cfg = config.plusultra.tools.git;
-  user = config.plusultra.user;
+  cfg = config.horizon.tools.git;
+  user = config.horizon.user;
 in
 {
-  options.plusultra.tools.git = {
+  options.horizon.tools.git = {
     enable = mkEnableOption "Git";
     userName = mkOpt types.str user.fullName "The name to configure git with.";
     userEmail = mkOpt types.str user.email "The email to configure git with.";

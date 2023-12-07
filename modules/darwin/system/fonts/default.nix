@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.system.fonts;
+with lib.horizon;
+let cfg = config.horizon.system.fonts;
 in
 {
-  options.plusultra.system.fonts = with types; {
+  options.horizon.system.fonts = with types; {
     enable = mkBoolOpt false "Whether or not to manage fonts.";
     fonts = mkOpt (listOf package) [ ] "Custom font packages to install.";
   };

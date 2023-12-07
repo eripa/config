@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.social;
+  cfg = config.horizon.suites.social;
 in
 {
-  options.plusultra.suites.social = with types; {
+  options.horizon.suites.social = with types; {
     enable = mkBoolOpt false "Whether or not to enable social configuration.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       apps = {
         discord = {
           enable = true;

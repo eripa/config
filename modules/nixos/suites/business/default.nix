@@ -1,15 +1,15 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.business;
+  cfg = config.horizon.suites.business;
 in
 {
-  options.plusultra.suites.business = with types; {
+  options.horizon.suites.business = with types; {
     enable = mkBoolOpt false "Whether or not to enable business configuration.";
   };
 
   config =
-    mkIf cfg.enable { plusultra = { apps = { frappe-books = enabled; }; }; };
+    mkIf cfg.enable { horizon = { apps = { frappe-books = enabled; }; }; };
 }

@@ -2,14 +2,14 @@
 
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub foldl;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.beyondthefringeoc;
+  cfg = config.horizon.services.websites.beyondthefringeoc;
 in
 {
-  options.plusultra.services.websites.beyondthefringeoc = with lib.types; {
+  options.horizon.services.websites.beyondthefringeoc = with lib.types; {
     enable = mkEnableOption "Beyond The Fringe OC Website";
-    package = mkOpt package pkgs.plusultra.beyondthefringeoc-website "The site package to use.";
+    package = mkOpt package pkgs.horizon.beyondthefringeoc-website "The site package to use.";
     domains = mkOpt (listOf str) [ "beyondthefringeoc.com" "hairbyjanine.com" ] "The domain to serve the website site on.";
 
     acme = {

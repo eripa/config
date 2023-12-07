@@ -1,9 +1,9 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.firefox;
+  cfg = config.horizon.apps.firefox;
   defaultSettings = {
     "browser.aboutwelcome.enabled" = false;
     "browser.meta_refresh_when_inactive.disabled" = true;
@@ -17,7 +17,7 @@ let
   };
 in
 {
-  options.plusultra.apps.firefox = with types; {
+  options.horizon.apps.firefox = with types; {
     enable = mkBoolOpt false "Whether or not to enable Firefox.";
     extraConfig =
       mkOpt str "" "Extra configuration for the user profile JS file.";
@@ -27,9 +27,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    plusultra.desktop.addons.firefox-nordic-theme = enabled;
+    horizon.desktop.addons.firefox-nordic-theme = enabled;
 
-    plusultra.home = {
+    horizon.home = {
       extraOptions = {
         programs.firefox = {
           enable = true;
@@ -41,10 +41,10 @@ in
             }
           );
 
-          profiles.${config.plusultra.user.name} = {
+          profiles.${config.horizon.user.name} = {
             inherit (cfg) extraConfig userChrome settings;
             id = 0;
-            name = config.plusultra.user.name;
+            name = config.horizon.user.name;
           };
         };
       };

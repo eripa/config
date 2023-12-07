@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.bottom;
+  cfg = config.horizon.tools.bottom;
 in
 {
-  options.plusultra.tools.bottom = with types; {
+  options.horizon.tools.bottom = with types; {
     enable = mkBoolOpt false "Whether or not to enable Bottom.";
   };
 

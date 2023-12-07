@@ -6,8 +6,8 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.suites.development;
+with lib.horizon; let
+  cfg = config.horizon.suites.development;
   apps = {
     vscode = enabled;
     yubikey = enabled;
@@ -19,7 +19,7 @@ with lib.plusultra; let
     prisma = enabled;
   };
 in {
-  options.plusultra.suites.development = with types; {
+  options.horizon.suites.development = with types; {
     enable =
       mkBoolOpt false
       "Whether or not to enable common development configuration.";
@@ -34,7 +34,7 @@ in {
       8081
     ];
 
-    plusultra = {
+    horizon = {
       inherit apps cli-apps;
 
       tools = {

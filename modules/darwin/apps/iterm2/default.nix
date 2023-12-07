@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.iterm2;
+  cfg = config.horizon.apps.iterm2;
 in
 {
-  options.plusultra.apps.iterm2 = with types; {
+  options.horizon.apps.iterm2 = with types; {
     enable = mkBoolOpt false "Whether or not to enable iTerm2.";
   };
 

@@ -6,19 +6,19 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.suites.common;
+with lib.horizon; let
+  cfg = config.horizon.suites.common;
 in {
-  options.plusultra.suites.common = with types; {
+  options.horizon.suites.common = with types; {
     enable = mkBoolOpt false "Whether or not to enable common configuration.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.plusultra.list-iommu
+      pkgs.horizon.list-iommu
     ];
 
-    plusultra = {
+    horizon = {
       nix = enabled;
 
       # TODO: Enable this once Attic is configured again.

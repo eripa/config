@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.desktop.addons.mako;
+with lib.horizon;
+let cfg = config.horizon.desktop.addons.mako;
 in
 {
-  options.plusultra.desktop.addons.mako = with types; {
+  options.horizon.desktop.addons.mako = with types; {
     enable = mkBoolOpt false "Whether to enable Mako in Sway.";
   };
 
@@ -39,6 +39,6 @@ in
       };
     };
 
-    plusultra.home.configFile."mako/config".source = ./config;
+    horizon.home.configFile."mako/config".source = ./config;
   };
 }

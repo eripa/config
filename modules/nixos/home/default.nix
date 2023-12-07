@@ -1,15 +1,15 @@
 { options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.home;
+with lib.horizon;
+let cfg = config.horizon.home;
 in
 {
   # imports = with inputs; [
   #   home-manager.nixosModules.home-manager
   # ];
 
-  options.plusultra.home = with types; {
+  options.horizon.home = with types; {
     file = mkOpt attrs { }
       (mdDoc "A set of files to be managed by home-manager's `home.file`.");
     configFile = mkOpt attrs { }
@@ -18,19 +18,19 @@ in
   };
 
   config = {
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       home.stateVersion = config.system.stateVersion;
-      home.file = mkAliasDefinitions options.plusultra.home.file;
+      home.file = mkAliasDefinitions options.horizon.home.file;
       xdg.enable = true;
-      xdg.configFile = mkAliasDefinitions options.plusultra.home.configFile;
+      xdg.configFile = mkAliasDefinitions options.horizon.home.configFile;
     };
 
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
 
-      users.${config.plusultra.user.name} =
-        mkAliasDefinitions options.plusultra.home.extraOptions;
+      users.${config.horizon.user.name} =
+        mkAliasDefinitions options.horizon.home.extraOptions;
     };
   };
 }

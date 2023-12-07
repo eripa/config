@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.protontricks;
+  cfg = config.horizon.apps.protontricks;
 in
 {
-  options.plusultra.apps.protontricks = with types; {
+  options.horizon.apps.protontricks = with types; {
     enable = mkBoolOpt false "Whether or not to enable Protontricks.";
   };
 

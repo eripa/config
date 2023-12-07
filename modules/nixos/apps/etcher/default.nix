@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.etcher;
+  cfg = config.horizon.apps.etcher;
 in
 {
-  options.plusultra.apps.etcher = with types; {
+  options.horizon.apps.etcher = with types; {
     enable = mkBoolOpt false "Whether or not to enable etcher.";
   };
 

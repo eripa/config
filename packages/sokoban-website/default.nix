@@ -1,7 +1,7 @@
 { lib, runCommandNoCC, inputs, ... }:
 
 let
-  inherit (lib.plusultra) override-meta;
+  inherit (lib.horizon) override-meta;
 
   new-meta = with lib; {
     description = "The website for [sokoban.app](https://sokoban.app).";

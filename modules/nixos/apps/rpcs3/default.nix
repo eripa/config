@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.rpcs3;
+  cfg = config.horizon.apps.rpcs3;
 in
 {
-  options.plusultra.apps.rpcs3 = with types; {
+  options.horizon.apps.rpcs3 = with types; {
     enable = mkBoolOpt false "Whether or not to enable rpcs3.";
   };
 

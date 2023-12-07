@@ -5,16 +5,16 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.cli-apps.tmux;
+with lib.horizon; let
+  cfg = config.horizon.cli-apps.tmux;
 in {
-  options.plusultra.cli-apps.tmux = {
+  options.horizon.cli-apps.tmux = {
     enable = mkEnableOption "Tmux";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      plusultra.tmux
+      horizon.tmux
     ];
   };
 }

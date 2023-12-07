@@ -2,12 +2,12 @@
 
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub foldl;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.jakehamilton;
+  cfg = config.horizon.services.websites.jakehamilton;
 in
 {
-  options.plusultra.services.websites.jakehamilton = with lib.types; {
+  options.horizon.services.websites.jakehamilton = with lib.types; {
     enable = mkEnableOption "Jake Hamilton Website";
     package = mkOpt package pkgs.jakehamilton-website "The site package to use.";
     domains = mkOpt (listOf str) [ "jakehamilton.dev" "jakehamilton.website" ] "The domain to serve the website site on.";

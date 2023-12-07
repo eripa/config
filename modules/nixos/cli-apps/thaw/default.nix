@@ -5,10 +5,10 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.cli-apps.thaw;
+with lib.horizon; let
+  cfg = config.horizon.cli-apps.thaw;
 in {
-  options.plusultra.cli-apps.thaw = with types; {
+  options.horizon.cli-apps.thaw = with types; {
     enable = mkBoolOpt false "Whether or not to enable thaw.";
   };
 

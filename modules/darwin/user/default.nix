@@ -5,14 +5,14 @@
   ...
 }: let
   inherit (lib) types mkIf mkDefault;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.user;
+  cfg = config.horizon.user;
 
   is-linux = pkgs.stdenv.isLinux;
   is-darwin = pkgs.stdenv.isDarwin;
 in {
-  options.plusultra.user = {
+  options.horizon.user = {
     name = mkOpt types.str "short" "The user account.";
 
     fullName = mkOpt types.str "Jake Hamilton" "The full name of the user.";
@@ -25,11 +25,11 @@ in {
     users.users.${cfg.name} = {
       # NOTE: Setting the uid here is required for another
       # module to evaluate successfully since it reads
-      # `users.users.${plusultra.user.name}.uid`.
+      # `users.users.${horizon.user.name}.uid`.
       uid = mkIf (cfg.uid != null) cfg.uid;
     };
 
-    snowfallorg.user.${config.plusultra.user.name}.home.config = {
+    snowfallorg.user.${config.horizon.user.name}.home.config = {
       home = {
         file = {
           ".profile".text = ''

@@ -1,11 +1,11 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.services.tailscale;
+with lib.horizon;
+let cfg = config.horizon.services.tailscale;
 in
 {
-  options.plusultra.services.tailscale = with types; {
+  options.horizon.services.tailscale = with types; {
     enable = mkBoolOpt false "Whether or not to configure Tailscale";
     autoconnect = {
       enable = mkBoolOpt false "Whether or not to enable automatic connection to Tailscale";
@@ -17,7 +17,7 @@ in
     assertions = [
       {
         assertion = cfg.autoconnect.enable -> cfg.autoconnect.key != "";
-        message = "plusultra.services.tailscale.autoconnect.key must be set";
+        message = "horizon.services.tailscale.autoconnect.key must be set";
       }
     ];
 

@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.desktop.addons.nautilus;
+with lib.horizon;
+let cfg = config.horizon.desktop.addons.nautilus;
 in
 {
-  options.plusultra.desktop.addons.nautilus = with types; {
+  options.horizon.desktop.addons.nautilus = with types; {
     enable = mkBoolOpt false "Whether to enable the gnome file manager.";
   };
 

@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.archetypes.gaming;
+  cfg = config.horizon.archetypes.gaming;
 in
 {
-  options.plusultra.archetypes.gaming = with types; {
+  options.horizon.archetypes.gaming = with types; {
     enable = mkBoolOpt false "Whether or not to enable the gaming archetype.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.suites = {
+    horizon.suites = {
       common = enabled;
       desktop = enabled;
       games = enabled;

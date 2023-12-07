@@ -1,22 +1,22 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.desktop.addons.firefox-nordic-theme;
-  profileDir = ".mozilla/firefox/${config.plusultra.user.name}";
+  cfg = config.horizon.desktop.addons.firefox-nordic-theme;
+  profileDir = ".mozilla/firefox/${config.horizon.user.name}";
 in
 {
-  options.plusultra.desktop.addons.firefox-nordic-theme = with types; {
+  options.horizon.desktop.addons.firefox-nordic-theme = with types; {
     enable = mkBoolOpt false "Whether to enable the Nordic theme for firefox.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.apps.firefox = {
+    horizon.apps.firefox = {
       extraConfig = builtins.readFile
-        "${pkgs.plusultra.firefox-nordic-theme}/configuration/user.js";
+        "${pkgs.horizon.firefox-nordic-theme}/configuration/user.js";
       userChrome = ''
-        @import "${pkgs.plusultra.firefox-nordic-theme}/userChrome.css";
+        @import "${pkgs.horizon.firefox-nordic-theme}/userChrome.css";
       '';
     };
   };

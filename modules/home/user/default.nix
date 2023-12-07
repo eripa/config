@@ -2,9 +2,9 @@
 
 let
   inherit (lib) types mkIf mkDefault mkMerge;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.user;
+  cfg = config.horizon.user;
 
   is-linux = pkgs.stdenv.isLinux;
   is-darwin = pkgs.stdenv.isDarwin;
@@ -18,7 +18,7 @@ let
       "/home/${cfg.name}";
 in
 {
-  options.plusultra.user = {
+  options.horizon.user = {
     enable = mkOpt types.bool false "Whether to configure the user account.";
     name = mkOpt (types.nullOr types.str) config.snowfallorg.user.name "The user account.";
 
@@ -33,11 +33,11 @@ in
       assertions = [
         {
           assertion = cfg.name != null;
-          message = "plusultra.user.name must be set";
+          message = "horizon.user.name must be set";
         }
         {
           assertion = cfg.home != null;
-          message = "plusultra.user.home must be set";
+          message = "horizon.user.home must be set";
         }
       ];
 

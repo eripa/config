@@ -1,18 +1,18 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.archetypes.server;
+  cfg = config.horizon.archetypes.server;
 in
 {
-  options.plusultra.archetypes.server = with types; {
+  options.horizon.archetypes.server = with types; {
     enable =
       mkBoolOpt false "Whether or not to enable the server archetype.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       suites = {
         common-slim = enabled;
       };

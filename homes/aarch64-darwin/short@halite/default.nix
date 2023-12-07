@@ -1,8 +1,8 @@
 { lib, pkgs, config, osConfig ? { }, format ? "unknown", ... }:
 
-with lib.plusultra;
+with lib.horizon;
 {
-  plusultra = {
+  horizon = {
     user = {
       enable = true;
       name = config.snowfallorg.user.name;

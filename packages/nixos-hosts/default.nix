@@ -10,7 +10,7 @@
 
 let
   inherit (lib) mapAttrsToList concatStringsSep;
-  inherit (lib.plusultra) override-meta;
+  inherit (lib.horizon) override-meta;
 
   substitute = args: builtins.readFile (substituteAll args);
 

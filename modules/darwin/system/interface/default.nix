@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.system.interface;
+with lib.horizon;
+let cfg = config.horizon.system.interface;
 in
 {
-  options.plusultra.system.interface = with types; {
+  options.horizon.system.interface = with types; {
     enable = mkEnableOption "macOS interface";
   };
 
@@ -24,6 +24,6 @@ in
       };
     };
 
-    plusultra.home.file.".hushlogin".text = "";
+    horizon.home.file.".hushlogin".text = "";
   };
 }

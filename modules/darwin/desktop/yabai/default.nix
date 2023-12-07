@@ -4,18 +4,18 @@
   config,
   ...
 }: let
-  cfg = config.plusultra.desktop.yabai;
+  cfg = config.horizon.desktop.yabai;
 
   inherit (lib) types mkEnableOption mkIf;
-  inherit (lib.plusultra) mkOpt enabled;
+  inherit (lib.horizon) mkOpt enabled;
 in {
-  options.plusultra.desktop.yabai = {
+  options.horizon.desktop.yabai = {
     enable = mkEnableOption "Yabai";
     enable-scripting-addition = mkOpt types.bool true "Whether to enable the scripting addition for Yabai. (Requires SIP to be disabled)";
   };
 
   config = mkIf cfg.enable {
-    plusultra.desktop.addons = {
+    horizon.desktop.addons = {
       skhd = enabled;
       spacebar = enabled;
     };

@@ -9,8 +9,8 @@
 # broken my setup. I'll need to invest some time to figure out how to override Alsa things
 # again...
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.hardware.audio;
+with lib.horizon; let
+  cfg = config.horizon.hardware.audio;
 
   lua-format = {
     type = with lib.types; let
@@ -121,7 +121,7 @@ with lib.plusultra; let
     alsa_monitor = cfg.alsa-monitor;
   };
 in {
-  options.plusultra.hardware.audio = with types; {
+  options.horizon.hardware.audio = with types; {
     enable = mkBoolOpt false "Whether or not to enable audio support.";
     alsa-monitor = mkOpt attrs {} "Alsa configuration.";
     nodes =
@@ -181,9 +181,9 @@ in {
       ]
       ++ cfg.extra-packages;
 
-    plusultra.user.extraGroups = ["audio"];
+    horizon.user.extraGroups = ["audio"];
 
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       systemd.user.services.mpris-proxy = {
         Unit.Description = "Mpris proxy";
         Unit.After = ["network.target" "sound.target"];

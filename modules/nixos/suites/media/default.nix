@@ -1,14 +1,14 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.media;
+  cfg = config.horizon.suites.media;
 in
 {
-  options.plusultra.suites.media = with types; {
+  options.horizon.suites.media = with types; {
     enable = mkBoolOpt false "Whether or not to enable media configuration.";
   };
 
-  config = mkIf cfg.enable { plusultra = { apps = { freetube = enabled; }; }; };
+  config = mkIf cfg.enable { horizon = { apps = { freetube = enabled; }; }; };
 }

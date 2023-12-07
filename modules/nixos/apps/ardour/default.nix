@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.ardour;
+  cfg = config.horizon.apps.ardour;
 in
 {
-  options.plusultra.apps.ardour = with types; {
+  options.horizon.apps.ardour = with types; {
     enable = mkBoolOpt false "Whether or not to enable Ardour.";
   };
 

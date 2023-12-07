@@ -21,7 +21,7 @@ let
       "${key} = ${value'}";
   };
 
-  cfg = config.plusultra.services.writefreely;
+  cfg = config.horizon.services.writefreely;
 
   isSqlite = cfg.database.type == "sqlite3";
   isMysql = cfg.database.type == "mysql";
@@ -135,7 +135,7 @@ let
     '';
 in
 {
-  options.plusultra.services.writefreely = {
+  options.horizon.services.writefreely = {
     enable =
       lib.mkEnableOption (lib.mdDoc "Writefreely, build a digital writing community");
 
@@ -259,7 +259,7 @@ in
         type = types.bool;
         default = false;
         description = lib.mdDoc ''
-          When `plusultra.services.writefreely.database.type` is set to
+          When `horizon.services.writefreely.database.type` is set to
           `"mysql"`, this option will enable the MySQL service locally.
         '';
       };
@@ -312,17 +312,17 @@ in
     assertions = [
       {
         assertion = cfg.host != "";
-        message = "plusultra.services.writefreely.host must be set";
+        message = "horizon.services.writefreely.host must be set";
       }
       {
         assertion = isMysqlLocal -> cfg.database.passwordFile != null;
         message =
-          "plusultra.services.writefreely.database.passwordFile must be set if plusultra.services.writefreely.database.createLocally is set to true";
+          "horizon.services.writefreely.database.passwordFile must be set if horizon.services.writefreely.database.createLocally is set to true";
       }
       {
         assertion = isSqlite -> !cfg.database.createLocally;
         message =
-          "plusultra.services.writefreely.database.createLocally has no use when plusultra.services.writefreely.database.type is set to sqlite3";
+          "horizon.services.writefreely.database.createLocally has no use when horizon.services.writefreely.database.type is set to sqlite3";
       }
     ];
 

@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.desktop.addons.waybar;
+with lib.horizon;
+let cfg = config.horizon.desktop.addons.waybar;
 in
 {
-  options.plusultra.desktop.addons.waybar = with types; {
+  options.horizon.desktop.addons.waybar = with types; {
     enable =
       mkBoolOpt false "Whether to enable Waybar in the desktop environment.";
   };
@@ -13,7 +13,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ waybar ];
 
-    plusultra.home.configFile."waybar/config".source = ./config;
-    plusultra.home.configFile."waybar/style.css".source = ./style.css;
+    horizon.home.configFile."waybar/config".source = ./config;
+    horizon.home.configFile."waybar/style.css".source = ./style.css;
   };
 }

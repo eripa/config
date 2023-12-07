@@ -1,16 +1,16 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.tools.misc;
+with lib.horizon;
+let cfg = config.horizon.tools.misc;
 in
 {
-  options.plusultra.tools.misc = with types; {
+  options.horizon.tools.misc = with types; {
     enable = mkBoolOpt false "Whether or not to enable common utilities.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.home.configFile."wgetrc".text = "";
+    horizon.home.configFile."wgetrc".text = "";
 
     environment.systemPackages = with pkgs; [
       fzf

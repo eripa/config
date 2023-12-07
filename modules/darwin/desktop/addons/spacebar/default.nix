@@ -1,12 +1,12 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.desktop.addons.spacebar;
+  cfg = config.horizon.desktop.addons.spacebar;
 in
 {
-  options.plusultra.desktop.addons.spacebar = {
+  options.horizon.desktop.addons.spacebar = {
     enable = mkEnableOption "Spacebar";
   };
 

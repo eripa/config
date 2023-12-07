@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.apps.dolphin;
+with lib.horizon;
+let cfg = config.horizon.apps.dolphin;
 in
 {
-  options.plusultra.apps.dolphin = with types; {
+  options.horizon.apps.dolphin = with types; {
     enable = mkBoolOpt false "Whether or not to enable Dolphin.";
   };
 

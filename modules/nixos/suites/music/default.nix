@@ -1,17 +1,17 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.music;
+  cfg = config.horizon.suites.music;
 in
 {
-  options.plusultra.suites.music = with types; {
+  options.horizon.suites.music = with types; {
     enable = mkBoolOpt false "Whether or not to enable music configuration.";
   };
 
   config = mkIf cfg.enable {
-    plusultra = {
+    horizon = {
       apps = {
         ardour = enabled;
         bottles = enabled;

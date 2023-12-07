@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 {
   imports = [ ./hardware.nix ];
 
@@ -42,7 +42,7 @@ with lib.plusultra;
     7359
   ];
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     cli-apps = {
@@ -126,8 +126,8 @@ with lib.plusultra;
             # For configuration options, see: man 5 smb.conf
             extra-config = {
               "create mask" = "0755";
-              "write list" = config.plusultra.user.name;
-              "read list" = config.plusultra.user.name;
+              "write list" = config.horizon.user.name;
+              "read list" = config.horizon.user.name;
             };
           };
           vault = {
@@ -135,8 +135,8 @@ with lib.plusultra;
 
             extra-config = {
               "create mask" = "0755";
-              "write list" = config.plusultra.user.name;
-              "read list" = config.plusultra.user.name;
+              "write list" = config.horizon.user.name;
+              "read list" = config.horizon.user.name;
             };
           };
         };
@@ -146,17 +146,17 @@ with lib.plusultra;
         enable = true;
         host = "hamho.me";
 
-        package = pkgs.plusultra.homer-catppuccin.override { favicon = "light"; };
+        package = pkgs.horizon.homer-catppuccin.override { favicon = "light"; };
 
         settings = {
           title = "Dashboard";
           subtitle = "Hamilton Home";
 
-          logo = pkgs.plusultra.homer-catppuccin.logos.light;
+          logo = pkgs.horizon.homer-catppuccin.logos.light;
 
           stylesheet = [
-            pkgs.plusultra.homer-catppuccin.stylesheets.latte
-            pkgs.plusultra.homer-catppuccin.stylesheets.frappe
+            pkgs.horizon.homer-catppuccin.stylesheets.latte
+            pkgs.horizon.homer-catppuccin.stylesheets.frappe
           ];
 
           footer = "";

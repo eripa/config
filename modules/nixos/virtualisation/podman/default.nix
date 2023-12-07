@@ -1,18 +1,18 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.virtualisation.podman;
+with lib.horizon;
+let cfg = config.horizon.virtualisation.podman;
 in
 {
-  options.plusultra.virtualisation.podman = with types; {
+  options.horizon.virtualisation.podman = with types; {
     enable = mkBoolOpt false "Whether or not to enable Podman.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ podman-compose ];
 
-    plusultra.home.extraOptions = {
+    horizon.home.extraOptions = {
       home.shellAliases = { "docker-compose" = "podman-compose"; };
     };
 

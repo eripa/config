@@ -1,7 +1,7 @@
 { pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
   gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
 
@@ -69,7 +69,7 @@ in
     };
   };
 
-  plusultra = {
+  horizon = {
     nix = enabled;
 
     desktop = {

@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.services.homer;
+  cfg = config.horizon.services.homer;
 
   yaml-format = pkgs.formats.yaml { };
   settings-yaml = yaml-format.generate "config.yml" cfg.settings;
@@ -15,10 +15,10 @@ let
       builtins.toString settings-yaml;
 in
 {
-  options.plusultra.services.homer = {
+  options.horizon.services.homer = {
     enable = mkEnableOption "Homer";
 
-    package = mkOpt types.package pkgs.plusultra.homer "The package of Homer assets to use.";
+    package = mkOpt types.package pkgs.horizon.homer "The package of Homer assets to use.";
 
     settings = mkOpt yaml-format.type { } "Configuration for Homer's config.yml file.";
     settings-path = mkOpt (types.nullOr types.path) null "A replacement for the generated config.yml file.";
@@ -47,15 +47,15 @@ in
     assertions = [
       {
         assertion = cfg.host != null;
-        message = "plusultra.services.homer.host must be set.";
+        message = "horizon.services.homer.host must be set.";
       }
       {
         assertion = cfg.settings-path != null -> cfg.settings == { };
-        message = "plusultra.services.homer.settings and plusultra.services.homer.settings-path are mutually exclusive.";
+        message = "horizon.services.homer.settings and horizon.services.homer.settings-path are mutually exclusive.";
       }
       {
         assertion = cfg.nginx.forceSSL -> cfg.acme.enable;
-        message = "plusultra.services.homer.nginx.forceSSL requires setting plusultra.services.homer.acme.enable to true.";
+        message = "horizon.services.homer.nginx.forceSSL requires setting horizon.services.homer.acme.enable to true.";
       }
     ];
 

@@ -1,15 +1,11 @@
 {
-  description = "Plus Ultra";
+  description = "Beyond the Horizon";
 
   inputs = {
-    # NixPkgs (nixos-22.11)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
-
-    # NixPkgs Unstable (nixos-unstable)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home Manager (release-22.05)
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # macOS Support (master)
@@ -124,46 +120,6 @@
       url = "github:suchipi/Bibata_Cursor";
       flake = false;
     };
-
-    # Hosted Sites
-    lasersandfeelings = {
-      url = "github:jakehamilton/lasersandfeelings";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "unstable";
-    };
-    pungeonquest = {
-      url = "github:jakehamilton/pungeonquest";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "unstable";
-    };
-    scrumfish = {
-      url = "github:jakehamilton/scrumfi.sh";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "unstable";
-    };
-    retrospectacle = {
-      url = "github:jakehamilton/retrospectacle.app";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "unstable";
-    };
-    jakehamilton-website = {
-      url = "github:jakehamilton/jakehamilton.dev";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "unstable";
-    };
-    noop-ai-website = {
-      url = "github:noopai/noop.ai";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "unstable";
-    };
-    sokoban-app-website = {
-      url = "https://github.com/jakehamilton/sokoban.app/releases/download/v1/sokoban.app.tar.gz";
-      flake = false;
-    };
-    snowfall-docs = {
-      url = "github:snowfallorg/docs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs: let
@@ -173,11 +129,11 @@
 
       snowfall = {
         meta = {
-          name = "plusultra";
-          title = "Plus Ultra";
+          name = "horizon";
+          title = "Beyond the Horizon";
         };
 
-        namespace = "plusultra";
+        namespace = "horizon";
       };
     };
   in
@@ -185,13 +141,6 @@
       channels-config = {
         allowUnfree = true;
         permittedInsecurePackages = [
-          # FIXME: This is a workaround for 22.11 and can
-          # be removed once NixPkgs is upgraded to 23.05.
-          "electron-20.3.11"
-          "nodejs-16.20.0"
-          "python-2.7.18.6"
-
-          "electron-22.3.27"
         ];
       };
 
@@ -210,7 +159,7 @@
         home-manager.nixosModules.home-manager
         nix-ld.nixosModules.nix-ld
         vault-service.nixosModules.nixos-vault-service
-        # TODO: Replace plusultra.services.attic now that vault-agent
+        # TODO: Replace horizon.services.attic now that vault-agent
         # exists and can force override environment files.
         # attic.nixosModules.atticd
       ];

@@ -3,10 +3,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.plusultra.cli-apps.neovim;
+  cfg = config.horizon.cli-apps.neovim;
 in
 {
-  options.plusultra.cli-apps.neovim = {
+  options.horizon.cli-apps.neovim = {
     enable = mkEnableOption "Neovim";
   };
 
@@ -14,7 +14,7 @@ in
     home = {
       packages = with pkgs; [
         less
-        plusultra.neovim
+        horizon.neovim
       ];
 
       sessionVariables = {

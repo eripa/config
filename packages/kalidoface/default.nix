@@ -1,7 +1,7 @@
 { lib, makeDesktopItem, firefox, symlinkJoin, ... }:
 
 let
-  with-meta = lib.plusultra.override-meta {
+  with-meta = lib.horizon.override-meta {
     platforms = lib.platforms.linux;
     broken = firefox.meta.broken;
   };
@@ -11,7 +11,7 @@ let
     desktopName = "Kalidoface 2D";
     genericName = "Animate Live2D characters using just your browser webcam!";
     exec = ''
-      ${firefox}/bin/firefox "https://kalidoface.com/?plusultra.app=true"'';
+      ${firefox}/bin/firefox "https://kalidoface.com/?horizon.app=true"'';
     icon = ./icon-2d.svg;
     type = "Application";
     categories = [ "Network" ];
@@ -23,7 +23,7 @@ let
     genericName =
       "Animate character faces, poses and fingers in 3D using just your browser webcam!";
     exec = ''
-      ${firefox}/bin/firefox "https://3d.kalidoface.com/?plusultra.app=true"'';
+      ${firefox}/bin/firefox "https://3d.kalidoface.com/?horizon.app=true"'';
     icon = ./icon-3d.svg;
     type = "Application";
     categories = [ "Network" ];

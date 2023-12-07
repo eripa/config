@@ -1,19 +1,19 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.desktop.addons.wallpapers;
-  inherit (pkgs.plusultra) wallpapers;
+  cfg = config.horizon.desktop.addons.wallpapers;
+  inherit (pkgs.horizon) wallpapers;
 in
 {
-  options.plusultra.desktop.addons.wallpapers = with types; {
+  options.horizon.desktop.addons.wallpapers = with types; {
     enable = mkBoolOpt false
       "Whether or not to add wallpapers to ~/Pictures/wallpapers.";
   };
 
   config = {
-    plusultra.home.file = lib.foldl
+    horizon.home.file = lib.foldl
       (acc: name:
         let wallpaper = wallpapers.${name};
         in

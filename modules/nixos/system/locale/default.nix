@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.system.locale;
+with lib.horizon;
+let cfg = config.horizon.system.locale;
 in
 {
-  options.plusultra.system.locale = with types; {
+  options.horizon.system.locale = with types; {
     enable = mkBoolOpt false "Whether or not to manage locale settings.";
   };
 

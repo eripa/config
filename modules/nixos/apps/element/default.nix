@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.element;
+  cfg = config.horizon.apps.element;
 in
 {
-  options.plusultra.apps.element = with types; {
+  options.horizon.apps.element = with types; {
     enable = mkBoolOpt false "Whether or not to enable Element.";
   };
 

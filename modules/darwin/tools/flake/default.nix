@@ -1,12 +1,12 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.tools.flake;
+  cfg = config.horizon.tools.flake;
 in
 {
-  options.plusultra.tools.flake = {
+  options.horizon.tools.flake = {
     enable = mkEnableOption "Flake";
   };
 

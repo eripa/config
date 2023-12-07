@@ -2,14 +2,14 @@
 
 let
   inherit (lib) mkIf mkEnableOption fetchFromGitHub;
-  inherit (lib.plusultra) mkOpt;
+  inherit (lib.horizon) mkOpt;
 
-  cfg = config.plusultra.services.websites.sokoban;
+  cfg = config.horizon.services.websites.sokoban;
 in
 {
-  options.plusultra.services.websites.sokoban = with lib.types; {
+  options.horizon.services.websites.sokoban = with lib.types; {
     enable = mkEnableOption "Sokoban Website";
-    package = mkOpt package pkgs.plusultra.sokoban-website "The site package to use.";
+    package = mkOpt package pkgs.horizon.sokoban-website "The site package to use.";
     domain = mkOpt str "sokoban.app" "The domain to serve the website site on.";
 
     acme = {

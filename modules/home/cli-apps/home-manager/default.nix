@@ -2,12 +2,12 @@
 
 let
   inherit (lib) mkEnableOption mkIf;
-  inherit (lib.plusultra) enabled;
+  inherit (lib.horizon) enabled;
 
-  cfg = config.plusultra.cli-apps.home-manager;
+  cfg = config.horizon.cli-apps.home-manager;
 in
 {
-  options.plusultra.cli-apps.home-manager = {
+  options.horizon.cli-apps.home-manager = {
     enable = mkEnableOption "home-manager";
   };
 

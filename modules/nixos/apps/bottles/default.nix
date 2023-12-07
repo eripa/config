@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.apps.bottles;
+with lib.horizon;
+let cfg = config.horizon.apps.bottles;
 in
 {
-  options.plusultra.apps.bottles = with types; {
+  options.horizon.apps.bottles = with types; {
     enable = mkBoolOpt false "Whether or not to enable Bottles.";
   };
 

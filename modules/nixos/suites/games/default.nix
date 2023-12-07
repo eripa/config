@@ -1,9 +1,9 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.suites.games;
+  cfg = config.horizon.suites.games;
   apps = {
     steam = enabled;
     prismlauncher = enabled;
@@ -19,10 +19,10 @@ let
   };
 in
 {
-  options.plusultra.suites.games = with types; {
+  options.horizon.suites.games = with types; {
     enable =
       mkBoolOpt false "Whether or not to enable common games configuration.";
   };
 
-  config = mkIf cfg.enable { plusultra = { inherit apps cli-apps; }; };
+  config = mkIf cfg.enable { horizon = { inherit apps cli-apps; }; };
 }

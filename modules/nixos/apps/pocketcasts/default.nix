@@ -1,16 +1,16 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.horizon;
 let
-  cfg = config.plusultra.apps.pocketcasts;
+  cfg = config.horizon.apps.pocketcasts;
 in
 {
-  options.plusultra.apps.pocketcasts = with types; {
+  options.horizon.apps.pocketcasts = with types; {
     enable = mkBoolOpt false "Whether or not to enable Pocketcasts.";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs.plusultra; [ pocketcasts ];
+    environment.systemPackages = with pkgs.horizon; [ pocketcasts ];
   };
 }

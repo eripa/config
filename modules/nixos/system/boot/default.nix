@@ -6,10 +6,10 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
-  cfg = config.plusultra.system.boot;
+with lib.horizon; let
+  cfg = config.horizon.system.boot;
 in {
-  options.plusultra.system.boot = with types; {
+  options.horizon.system.boot = with types; {
     enable = mkBoolOpt false "Whether or not to enable booting.";
   };
 

@@ -1,20 +1,20 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
-let cfg = config.plusultra.desktop.addons.foot;
+with lib.horizon;
+let cfg = config.horizon.desktop.addons.foot;
 in
 {
-  options.plusultra.desktop.addons.foot = with types; {
+  options.horizon.desktop.addons.foot = with types; {
     enable = mkBoolOpt false "Whether to enable the gnome file manager.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.desktop.addons.term = {
+    horizon.desktop.addons.term = {
       enable = true;
       pkg = pkgs.foot;
     };
 
-    plusultra.home.configFile."foot/foot.ini".source = ./foot.ini;
+    horizon.home.configFile."foot/foot.ini".source = ./foot.ini;
   };
 }
