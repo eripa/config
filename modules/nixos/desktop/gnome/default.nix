@@ -56,7 +56,8 @@ in {
     horizon.desktop.addons = {
       gtk = enabled;
       wallpapers = enabled;
-      electron-support = enabled;
+      # TODO: what is this?
+      # electron-support = enabled;
       foot = enabled;
     };
 

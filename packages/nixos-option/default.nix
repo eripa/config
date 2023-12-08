@@ -3,7 +3,7 @@
 , makeWrapper
 , fetchFromGitHub
 , runCommandNoCC
-, flakeSource ? "/home/short/work/config"
+, flakeSource ? "/home/short/dev/config"
 , ...
 }:
 

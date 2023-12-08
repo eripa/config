@@ -34,7 +34,7 @@ in
           push = { autoSetupRemote = true; };
           core = { whitespace = "trailing-space,space-before-tab"; };
           safe = {
-            directory = "${config.users.users.${user.name}.home}/work/config";
+            directory = "${config.users.users.${user.name}.home}/dev/config";
           };
         };
       };

@@ -26,7 +26,7 @@ in {
 
       cli-apps = {
         flake = enabled;
-        thaw = enabled;
+        # thaw = enabled;
       };
 
       tools = {
@@ -38,13 +38,13 @@ in {
       };
 
       hardware = {
-        storage = enabled;
+        # storage = enabled;
         networking = enabled;
       };
 
       services = {
         openssh = enabled;
-        tailscale = enabled;
+        # tailscale = enabled;
       };
 
       security = {

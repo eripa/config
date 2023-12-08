@@ -10,13 +10,13 @@ with lib.horizon; let
   cfg = config.horizon.suites.development;
   apps = {
     vscode = enabled;
-    yubikey = enabled;
+    # yubikey = enabled;
   };
   cli-apps = {
     tmux = enabled;
     neovim = enabled;
-    yubikey = enabled;
-    prisma = enabled;
+    # yubikey = enabled;
+    # prisma = enabled;
   };
 in {
   options.horizon.suites.development = with types; {
@@ -44,9 +44,9 @@ in {
         go = enabled;
         http = enabled;
         k8s = enabled;
-        node = enabled;
-        titan = enabled;
-        qmk = enabled;
+        # node = enabled;
+        # titan = enabled;
+        # qmk = enabled;
       };
 
       virtualisation = {podman = enabled;};

@@ -1,17 +1,18 @@
-{ config, lib, ... }:
-
-let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.horizon.system.zfs;
 
   inherit (lib) mkEnableOption mkIf mkDefault;
   inherit (lib.horizon) mkOpt enabled;
   inherit (lib.types) listOf str;
-in
-{
+in {
   options.horizon.system.zfs = {
     enable = mkEnableOption "ZFS support";
 
-    pools = mkOpt (listOf str) [ "rpool" ] "The ZFS pools to manage.";
+    pools = mkOpt (listOf str) ["rpool"] "The ZFS pools to manage.";
 
     auto-snapshot = {
       enable = mkEnableOption "ZFS auto snapshotting";
@@ -38,10 +39,11 @@ in
       };
     };
 
-    horizon = {
-      tools = {
-        icehouse = enabled;
-      };
-    };
+    # TODO: what
+    # horizon = {
+    #   tools = {
+    #     icehouse = enabled;
+    #   };
+    # };
   };
 }

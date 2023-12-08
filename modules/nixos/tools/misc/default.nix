@@ -1,10 +1,14 @@
-{ options, config, lib, pkgs, ... }:
-
-with lib;
-with lib.horizon;
-let cfg = config.horizon.tools.misc;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with lib.horizon; let
+  cfg = config.horizon.tools.misc;
+in {
   options.horizon.tools.misc = with types; {
     enable = mkBoolOpt false "Whether or not to enable common utilities.";
   };
@@ -18,7 +22,8 @@ in
       unzip
       file
       jq
-      clac
+      yq-go
+      ripgrep
       wget
     ];
   };

@@ -14,7 +14,9 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      horizon.tmux
+      tmux
+      # TODO: build own package of tmux in packages/tmux
+      # horizon.tmux
     ];
   };
 }

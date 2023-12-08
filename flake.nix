@@ -152,7 +152,6 @@
         cowsay.overlays.default
         icehouse.overlays.default
         attic.overlays.default
-        snowfall-docs.overlay
       ];
 
       systems.modules.nixos = with inputs; [

@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   modulesPath,
   inputs,
@@ -17,56 +18,28 @@ in {
 
   networking.hostId = "e5361c48";
   networking.hostName = "core";
-  time.timeZone = "America/Vancouver";
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_acpi"];
-  boot.kernelParams = [];
-  boot = {
-    # zfs cannot use latest kernel
-    # kernelPackages = pkgs.linuxPackages_latest;
-    extraModulePackages = [];
-  };
+  boot.supportedFilesystems = [ "bcachefs" ];
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 
-  # rpool/nixos/root / zfs x-initrd.mount,X-mount.mkdir,noatime 0 0
-  # bpool/nixos/root /boot zfs x-initrd.mount,X-mount.mkdir,noatime 0 0
-  # /dev/disk/by-id/nvme-SSD_256GB_202308310802-part1 /boot/efis/nvme-SSD_256GB_202308310802-part1 vfat x-systemd.idle-timeout=1min,x-systemd.automount,noauto,nofail,noatime,X-mount.mkdir 0 2
-  # rpool/nixos/home /home zfs x-initrd.mount,X-mount.mkdir,noatime 0 0
-  # rpool/nixos/var/lib /var/lib zfs x-initrd.mount,X-mount.mkdir,noatime 0 0
-  # rpool/nixos/var/log /var/log zfs x-initrd.mount,X-mount.mkdir,noatime 0 0
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_acpi" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
-  fileSystems = {
-    "/" = {
-      device = "rpool/nixos/root";
-      fsType = "zfs";
+  fileSystems."/" =
+    { device = "UUID=7936f718-161b-48c7-9e47-3022db1daae0";
+      fsType = "bcachefs";
     };
 
-    "/boot/efis/nvme-SSD_256GB_202308310802-part1" = {
-      device = "/dev/disk/by-id/nvme-SSD_256GB_202308310802-part1";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/12CE-A600";
       fsType = "vfat";
     };
 
-    "/boot" = {
-      device = "bpool/nixos/root";
-      fsType = "zfs";
-    };
-
-    "/home" = {
-      device = "rpool/nixos/home";
-      fsType = "zfs";
-    };
-
-    "/var/lib" = {
-      device = "rpool/nixos/var/lib";
-      fsType = "zfs";
-    };
-
-    "/var/log" = {
-      device = "rpool/nixos/var/log";
-      fsType = "zfs";
-    };
-  };
-
-  swapDevices = [{device = "/dev/mapper/dev-disk-byx2did-nvmex2dSSD_256GB_202308310802x2dpart4";}];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/9a235ead-c7a9-4204-943e-9359bce46ec8"; }
+    ];
 
   # NOTE: NetworkManager will handle DHCP.
   networking.interfaces.eno1.useDHCP = false;

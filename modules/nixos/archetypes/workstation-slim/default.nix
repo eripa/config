@@ -7,22 +7,19 @@
 }:
 with lib;
 with lib.horizon; let
-  cfg = config.horizon.archetypes.workstation;
+  cfg = config.horizon.archetypes.workstation-slim;
 in {
-  options.horizon.archetypes.workstation = with types; {
+  options.horizon.archetypes.workstation-slim = with types; {
     enable =
-      mkBoolOpt false "Whether or not to enable the workstation archetype.";
+      mkBoolOpt false "Whether or not to enable the workstation slim archetype.";
   };
 
   config = mkIf cfg.enable {
     horizon = {
       suites = {
-        common = enabled;
+        common-slim = enabled;
         desktop = enabled;
         development = enabled;
-        art = enabled;
-        video = enabled;
-        social = enabled;
         media = enabled;
       };
 

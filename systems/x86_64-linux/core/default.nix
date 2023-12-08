@@ -14,11 +14,7 @@ with lib.horizon; {
     allowedTCPPorts = [22];
   };
 
-  environment.systemPackages = with pkgs; [
-    chromium
-    horizon.kalidoface
-    deluge
-  ];
+  environment.systemPackages = with pkgs; [];
 
   horizon = {
     apps = {};
@@ -26,7 +22,7 @@ with lib.horizon; {
     user.prompt-init = false;
 
     archetypes = {
-      workstation = enabled;
+      workstation-slim = enabled;
     };
 
     desktop.gnome = {

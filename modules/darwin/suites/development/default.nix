@@ -23,10 +23,10 @@ in
         # go = enabled;
         # http = enabled;
         # k8s = enabled;
-        node = enabled;
+        # node = enabled;
         # titan = enabled;
         python = enabled;
-        java = enabled;
+        # java = enabled;
       };
 
       # virtualisation = { podman = enabled; };
